@@ -1,0 +1,66 @@
+import 'package:hokoo_flutter/Api_Service/chat/model/get_old_chat_model.dart';
+import 'package:hokoo_flutter/view/utils/settings/app_variables.dart';
+
+List<GetOldChat> dummyChat = [];
+List<GetOldChat> dummyChat1 = [
+  GetOldChat(
+    id: '1',
+    message: 'Hey there!',
+    senderId: loginUserId,
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:00:00Z',
+    updatedAt: '2024-02-26T08:00:00Z',
+  ),
+  GetOldChat(
+    id: '2',
+    message: 'Hi! How are you?',
+    senderId: '1000352355457',
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:01:00Z',
+    updatedAt: '2024-02-26T08:01:00Z',
+  ),
+  GetOldChat(
+    id: '3',
+    message: 'I\'m doing well, thanks! How about you?',
+    senderId: loginUserId,
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:02:00Z',
+    updatedAt: '2024-02-26T08:02:00Z',
+  ),
+  GetOldChat(
+    id: '4',
+    message: 'I\'m good too, thanks!',
+    senderId: '1000352355457',
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:03:00Z',
+    updatedAt: '2024-02-26T08:03:00Z',
+  ),
+  GetOldChat(
+    id: '1',
+    message: 'Good morning!',
+    senderId: loginUserId,
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:04:00Z',
+    updatedAt: '2024-02-26T08:04:00Z',
+  ),
+  GetOldChat(
+    id: '6',
+    message: 'Morning! How\'s your day going?',
+    senderId: '1000352355457',
+    messageType: 1,
+    type: 0,
+    date: '2024-02-26',
+    createdAt: '2024-02-26T08:05:00Z',
+    updatedAt: '2024-02-26T08:05:00Z',
+  ),
+];

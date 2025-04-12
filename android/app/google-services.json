@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "751966710179",
+    "project_id": "hooko-flutter",
+    "storage_bucket": "hooko-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751966710179:android:61336f6fab3ef13bc2d216",
+        "android_client_info": {
+          "package_name": "com.app.flirtzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751966710179-bf5ld5bmgf8tsr8bdnhk28bjkct9q4ke.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.flirtzy",
+            "certificate_hash": "3b790de861ad4d9124fdc4e8afca995d3357f738"
+          }
+        },
+        {
+          "client_id": "751966710179-2p2jmlcibv617tm5olii83cfaseol9gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUAqZ-bqNoBCS-Z4PdahkVENSx00uFT_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751966710179-2p2jmlcibv617tm5olii83cfaseol9gb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751966710179-uptcmb93qhcc5cjabdbtqoimi1ppgk9g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.products.hooko-flutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751966710179:android:bdec7dba4ac84a2dc2d216",
+        "android_client_info": {
+          "package_name": "com.products.hooko_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751966710179-30js4anequrihmfptfmq2rf38fio0i8u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.products.hooko_flutter",
+            "certificate_hash": "d774486e96ff01743ef6582e6b4a003e284a86d5"
+          }
+        },
+        {
+          "client_id": "751966710179-i2kc6voivuhufetpgch0h4b4umnc66e6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.products.hooko_flutter",
+            "certificate_hash": "3b790de861ad4d9124fdc4e8afca995d3357f738"
+          }
+        },
+        {
+          "client_id": "751966710179-2p2jmlcibv617tm5olii83cfaseol9gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUAqZ-bqNoBCS-Z4PdahkVENSx00uFT_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751966710179-2p2jmlcibv617tm5olii83cfaseol9gb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751966710179-uptcmb93qhcc5cjabdbtqoimi1ppgk9g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.products.hooko-flutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
