@@ -1058,7 +1058,7 @@ class _ParticipantState extends State<Participant> with SingleTickerProviderStat
                     onTap: () {
                       setState(() {
                         isAbsorbing = true;
-                        Share.share("Hello MyVideoApp User");
+                        Share.share("Hello Babble User");
                         Future.delayed(const Duration(seconds: 3), () {
                           setState(() {
                             isAbsorbing = false;

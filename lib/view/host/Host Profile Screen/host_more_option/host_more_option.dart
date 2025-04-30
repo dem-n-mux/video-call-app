@@ -164,7 +164,7 @@ class _HostMoreOptionScreenState extends State<HostMoreOptionScreen> {
         name: "Share Us",
         onTap: () {
           Share.share(
-            "Hello MyVideoApp",
+            "Hello Babble",
           );
         },
       ),

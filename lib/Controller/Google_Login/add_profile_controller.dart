@@ -260,7 +260,7 @@ class AddProfileController extends GetxController {
         androidId,
         countryProfile,
         selectedGender == 0 ? "${Constant.BASE_URL}storage/male.png" : "${Constant.BASE_URL}storage/female.png",
-        "MyVideoApp User",
+        "Babble User",
         currentAge.toString(),
         selectedGender == 0 ? "Male" : "Female",
       );

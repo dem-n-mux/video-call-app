@@ -86,7 +86,7 @@ class _PayScreenState extends State<PayScreen> implements IAPCallback {
       "amount": num.parse(widget.amount) * 100,
       // "amount": num.parse(widget.amount) * 100,
       'currency': 'INR',
-      "name": "MyVideoApp",
+      "name": "Babble",
       "description": "Payment For any product",
       "prefill": {
         "contact": "",
@@ -363,74 +363,74 @@ class _PayScreenState extends State<PayScreen> implements IAPCallback {
                             ),
                           ))
                       : const SizedBox(),
-                  const SizedBox(height: 20),
-                  flutterWaveSwitch
-                      ? const Divider(
-                    height: 1,
-                    indent: 20,
-                    endIndent: 20,
-                    color: Color(0xff555555),
-                  )
-                      : const SizedBox(),
-                  flutterWaveSwitch
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-                          child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                selectedValue = "FlutterWave";
-                                selectedPayment = selectedValue;
-                                log(selectedPayment);
-                              });
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 5),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 48,
-                                        width: 48,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(AppImages.flutterWave, fit: BoxFit.contain),
-                                      ),
-                                      const SizedBox(width: 30),
-                                      const Text(
-                                        "Flutter Wave",
-                                        style: TextStyle(
-                                          color: AppColors.lightPinkColor,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Transform.scale(
-                                  scale: 1.2,
-                                  child: Radio(
-                                      overlayColor: WidgetStateProperty.all(Colors.transparent),
-                                      activeColor: AppColors.pinkColor,
-                                      value: "FlutterWave",
-                                      groupValue: selectedValue,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          log("=======$value");
-                                          selectedValue = value!;
-                                          selectedPayment = selectedValue;
-                                          log(selectedPayment);
-                                        });
-                                      }),
-                                )
-                              ],
-                            ),
-                          ))
-                      : const SizedBox(),
+                  // const SizedBox(height: 20),
+                  // flutterWaveSwitch
+                  //     ? const Divider(
+                  //   height: 1,
+                  //   indent: 20,
+                  //   endIndent: 20,
+                  //   color: Color(0xff555555),
+                  // )
+                  //     : const SizedBox(),
+                  // flutterWaveSwitch
+                  //     ? Padding(
+                  //         padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+                  //         child: InkWell(
+                  //           onTap: () {
+                  //             setState(() {
+                  //               selectedValue = "FlutterWave";
+                  //               selectedPayment = selectedValue;
+                  //               log(selectedPayment);
+                  //             });
+                  //           },
+                  //           child: Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             children: [
+                  //               Padding(
+                  //                 padding: const EdgeInsets.only(left: 5),
+                  //                 child: Row(
+                  //                   children: [
+                  //                     Container(
+                  //                       height: 48,
+                  //                       width: 48,
+                  //                       clipBehavior: Clip.antiAlias,
+                  //                       decoration: const BoxDecoration(
+                  //                         shape: BoxShape.circle,
+                  //                       ),
+                  //                       child: Image.asset(AppImages.flutterWave, fit: BoxFit.contain),
+                  //                     ),
+                  //                     const SizedBox(width: 30),
+                  //                     const Text(
+                  //                       "Flutter Wave",
+                  //                       style: TextStyle(
+                  //                         color: AppColors.lightPinkColor,
+                  //                         fontWeight: FontWeight.w600,
+                  //                         fontSize: 18,
+                  //                       ),
+                  //                     ),
+                  //                   ],
+                  //                 ),
+                  //               ),
+                  //               Transform.scale(
+                  //                 scale: 1.2,
+                  //                 child: Radio(
+                  //                     overlayColor: WidgetStateProperty.all(Colors.transparent),
+                  //                     activeColor: AppColors.pinkColor,
+                  //                     value: "FlutterWave",
+                  //                     groupValue: selectedValue,
+                  //                     onChanged: (value) {
+                  //                       setState(() {
+                  //                         log("=======$value");
+                  //                         selectedValue = value!;
+                  //                         selectedPayment = selectedValue;
+                  //                         log(selectedPayment);
+                  //                       });
+                  //                     }),
+                  //               )
+                  //             ],
+                  //           ),
+                  //         ))
+                  //     : const SizedBox(),
                   const SizedBox(height: 30),
                   const Spacer(),
                   AbsorbPointer(

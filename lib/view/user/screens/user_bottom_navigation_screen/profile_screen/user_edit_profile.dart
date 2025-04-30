@@ -235,11 +235,11 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         onEditingComplete: () =>
                             FocusScope.of(context).nextFocus(),
                         textInputAction: TextInputAction.next,
-                        cursorColor: const Color(0xff5B5C5F).withOpacity(0.2),
+                        cursorColor: const Color(0xffffffff).withOpacity(0.2),
                         controller: userNameController,
                         style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: const Color(0xff818892).withOpacity(0.6),
+                          color: const Color(0xffffffff).withOpacity(0.6),
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
@@ -249,7 +249,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                           border: InputBorder.none,
                           hintText: userName,
                           hintStyle: TextStyle(
-                            color: const Color(0xff818892).withOpacity(0.6),
+                            color: const Color(0xffffffff).withOpacity(0.6),
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
@@ -277,7 +277,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         hint: Text(
                           userGender,
                           style: TextStyle(
-                            color: const Color(0xff818892).withOpacity(0.6),
+                            color: const Color(0xffffffff).withOpacity(0.6),
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
@@ -289,7 +289,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                                 child: Text(
                                   item,
                                   style: TextStyle(
-                                    color: const Color(0xff818892)
+                                    color: const Color(0xffffffff)
                                         .withOpacity(0.6),
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -337,7 +337,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                               "${dateOfBirth.toLocal()}".split(' ')[0],
                               style: TextStyle(
                                 decoration: TextDecoration.none,
-                                color: const Color(0xff818892).withOpacity(0.6),
+                                color: const Color(0xffffffff).withOpacity(0.6),
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -349,11 +349,11 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         //   onEditingComplete: () =>
                         //       FocusScope.of(context).nextFocus(),
                         //   textInputAction: TextInputAction.next,
-                        //   cursorColor: const Color(0xff5B5C5F).withOpacity(0.2),
+                        //   cursorColor: const Color(0xffffffff).withOpacity(0.2),
                         //   controller: userDateOfBirthController,
                         //   style: TextStyle(
                         //     decoration: TextDecoration.none,
-                        //     color: const Color(0xff818892).withOpacity(0.6),
+                        //     color: const Color(0xffffffff).withOpacity(0.6),
                         //     fontSize: 18,
                         //     fontWeight: FontWeight.w600,
                         //   ),
@@ -362,7 +362,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         //     border: InputBorder.none,
                         //     hintText: userDob,
                         //     hintStyle: TextStyle(
-                        //       color: const Color(0xff818892).withOpacity(0.6),
+                        //       color: const Color(0xffffffff).withOpacity(0.6),
                         //       fontSize: 18,
                         //       fontWeight: FontWeight.w600,
                         //     ),
@@ -386,11 +386,11 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                         onEditingComplete: () =>
                             FocusScope.of(context).nextFocus(),
                         textInputAction: TextInputAction.next,
-                        cursorColor: const Color(0xff5B5C5F).withOpacity(0.2),
+                        cursorColor: const Color(0xffffffff).withOpacity(0.2),
                         controller: userBioController,
                         style: TextStyle(
                           decoration: TextDecoration.none,
-                          color: const Color(0xff818892).withOpacity(0.6),
+                          color: const Color(0xffffffff).withOpacity(0.6),
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
@@ -399,7 +399,7 @@ class _UserEditProfileScreenState extends State<UserEditProfileScreen> {
                           border: InputBorder.none,
                           hintText: userBio,
                           hintStyle: TextStyle(
-                            color: const Color(0xff818892).withOpacity(0.6),
+                            color: const Color(0xffffffff).withOpacity(0.6),
                             fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),

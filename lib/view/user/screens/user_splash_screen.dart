@@ -204,7 +204,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
   Future _showNotificationWithSound(RemoteMessage message) async {
     var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
       '0',
-      'MyVideoApp',
+      'Babble',
       channelDescription: 'hello',
       icon: 'mipmap/ic_launcher',
       importance: Importance.max,
@@ -378,8 +378,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
       body: Obx(() {
         if (settingController.isLoading.value) {
           return Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
+            color: AppColors.whiteColor,
+            // decoration: const BoxDecoration(
+            //     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
             child: const Column(
               children: [
                 Expanded(
@@ -392,7 +393,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
                 Column(
                   children: [
                     Text(
-                      "MyVideoApp",
+                      "Babble",
                       style: TextStyle(color: AppColors.pinkColor, fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                     Padding(
@@ -411,8 +412,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
           return Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
+                color: AppColors.whiteColor,
+                // decoration: const BoxDecoration(
+                //     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
                 child: const Column(
                   children: [
                     Expanded(
@@ -425,7 +427,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
                     Column(
                       children: [
                         Text(
-                          "MyVideoApp",
+                          "Babble",
                           style: TextStyle(color: AppColors.pinkColor, fontSize: 24, fontWeight: FontWeight.w600),
                         ),
                         Padding(
@@ -464,8 +466,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
           return Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
+                color: AppColors.whiteColor,
+                // decoration: const BoxDecoration(
+                //     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
                 child: const Column(
                   children: [
                     Expanded(
@@ -478,7 +481,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
                     Column(
                       children: [
                         Text(
-                          "MyVideoApp",
+                          "Babble",
                           style: TextStyle(color: AppColors.pinkColor, fontSize: 24, fontWeight: FontWeight.w600),
                         ),
                         Padding(
@@ -517,8 +520,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
           return Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
+                color: AppColors.whiteColor,
+                // decoration: const BoxDecoration(
+                //     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
                 child: const Column(
                   children: [
                     Expanded(
@@ -531,7 +535,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
                     Column(
                       children: [
                         Text(
-                          "MyVideoApp",
+                          "Babble",
                           style: TextStyle(color: AppColors.pinkColor, fontSize: 24, fontWeight: FontWeight.w600),
                         ),
                         Padding(
@@ -570,8 +574,9 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
           return Container(
             height: Get.height,
             width: Get.width,
-            decoration: const BoxDecoration(
-                image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
+            color: AppColors.whiteColor,
+            // decoration: const BoxDecoration(
+            //     image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.splashScreenBackground))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -582,14 +587,15 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
           );
         } else {
           return Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  AppImages.splashScreenBackground,
-                ),
-              ),
-            ),
+            color: AppColors.whiteColor,
+            // decoration: const BoxDecoration(
+            //   image: DecorationImage(
+            //     fit: BoxFit.cover,
+            //     image: AssetImage(
+            //       AppImages.splashScreenBackground,
+            //     ),
+            //   ),
+            // ),
             child: const Column(
               children: [
                 Expanded(
@@ -602,7 +608,7 @@ class _UserSplashScreenState extends State<UserSplashScreen> with WidgetsBinding
                 Column(
                   children: [
                     Text(
-                      "MyVideoApp",
+                      "Babble",
                       style: TextStyle(color: AppColors.pinkColor, fontSize: 24, fontWeight: FontWeight.w600),
                     ),
                     Padding(

@@ -64,7 +64,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                 title: Text(
                   "Fill Your Profile",
                   style: GoogleFonts.poppins(
-                    color: AppColors.whiteColor,
+                    color: AppColors.blackColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 21,
                   ),
@@ -180,7 +180,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 17,
-                                      color: AppColors.lightPinkColor,
+                                      color: AppColors.blackColor,
                                     ),
                                   ),
                                 ],
@@ -192,7 +192,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                       Text(
                         "Country",
                         style:
-                            GoogleFonts.poppins(color: AppColors.whiteColor, fontWeight: FontWeight.w600, fontSize: 15),
+                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
                       ).paddingOnly(top: 20, bottom: 10),
                       GestureDetector(
                         onTap: () {
@@ -247,7 +247,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                     left: 15,
                                                   ),
                                                   decoration: BoxDecoration(
-                                                    color: AppColors.textFormFiledColor,
+                                                    color: AppColors.grey,
                                                     borderRadius: BorderRadius.circular(14),
                                                   ),
                                                   child: GetBuilder<GlobalCountryController>(
@@ -270,7 +270,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                           controller: controller.searchCountryController,
                                                           style: GoogleFonts.poppins(
                                                             decoration: TextDecoration.none,
-                                                            color: AppColors.whiteColor,
+                                                            color: AppColors.blackColor,
                                                             fontSize: 15,
                                                             fontWeight: FontWeight.w500,
                                                           ),
@@ -282,7 +282,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                             border: InputBorder.none,
                                                             hintText: "Search your country",
                                                             hintStyle: GoogleFonts.poppins(
-                                                                color: AppColors.grey,
+                                                                color: AppColors.blackColor,
                                                                 fontSize: 15,
                                                                 fontWeight: FontWeight.w400),
                                                           ),
@@ -355,7 +355,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                                                 .globalCountryData!.flag![index].name
                                                                                 .toString(),
                                                                         style: GoogleFonts.poppins(
-                                                                            color: Colors.white, fontSize: 16),
+                                                                            color: Colors.black, fontSize: 16),
                                                                       ).paddingOnly(left: 10),
                                                                     ],
                                                                   ),
@@ -385,7 +385,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                           ),
                           width: Get.width,
                           decoration: BoxDecoration(
-                            color: AppColors.textFormFiledColor,
+                            color: AppColors.grey,
                             borderRadius: BorderRadius.circular(14),
                           ),
                           alignment: Alignment.centerLeft,
@@ -434,7 +434,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                       Text(
                         "Age",
                         style:
-                            GoogleFonts.poppins(color: AppColors.whiteColor, fontWeight: FontWeight.w600, fontSize: 15),
+                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
                       ).paddingOnly(top: 20, bottom: 10),
                       GestureDetector(
                         onTap: () {
@@ -483,7 +483,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                               Text(
                                                 "Select your age",
                                                 style: GoogleFonts.poppins(
-                                                    color: AppColors.whiteColor,
+                                                    color: AppColors.blackColor,
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 15),
                                               ).paddingOnly(top: 20, bottom: 10),
@@ -529,7 +529,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                             child: Text(
                                                               "Cancel",
                                                               style: GoogleFonts.poppins(
-                                                                color: AppColors.lightPinkColor,
+                                                                color: AppColors.blackColor,
                                                                 fontWeight: FontWeight.w600,
                                                                 fontSize: 18,
                                                               ),
@@ -554,7 +554,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                             child: Text(
                                                               "Ok",
                                                               style: GoogleFonts.poppins(
-                                                                color: AppColors.lightPinkColor,
+                                                                color: AppColors.blackColor,
                                                                 fontWeight: FontWeight.w600,
                                                                 fontSize: 18,
                                                               ),
@@ -582,7 +582,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                           ),
                           width: Get.width,
                           decoration: BoxDecoration(
-                            color: AppColors.textFormFiledColor,
+                            color: AppColors.grey,
                             borderRadius: BorderRadius.circular(14),
                           ),
                           child: Row(
@@ -639,7 +639,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                       Text(
                         "Gender",
                         style:
-                            GoogleFonts.poppins(color: AppColors.whiteColor, fontWeight: FontWeight.w600, fontSize: 15),
+                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
                       ).paddingOnly(top: 20, bottom: 10),
                       GetBuilder<AddProfileController>(
                         builder: (controller) {
@@ -708,7 +708,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                         fontSize: 17,
                                         color: (controller.selectedGender == 0)
                                             ? AppColors.pinkColor
-                                            : AppColors.lightPinkColor,
+                                            : AppColors.blackColor,
                                       ),
                                     )
                                   ],
@@ -776,7 +776,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                         fontSize: 17,
                                         color: (controller.selectedGender == 1)
                                             ? AppColors.pinkColor
-                                            : AppColors.lightPinkColor,
+                                            : AppColors.blackColor,
                                       ),
                                     ),
                                   ],

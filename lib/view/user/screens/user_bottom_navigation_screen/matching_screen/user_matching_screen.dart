@@ -65,7 +65,7 @@ class _UserMatchingScreenState extends State<UserMatchingScreen> {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: SafeArea(
             child: InkWell(
           onTap: () {

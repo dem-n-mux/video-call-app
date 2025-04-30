@@ -161,16 +161,16 @@ class _UserHomeProfileScreenState extends State<UserHomeProfileScreen> {
                                 Icons.report_gmailerrorred,
                               ),
                             )).paddingOnly(right: 10),
-                        GestureDetector(
-                            onTap: () {
-                              Share.share(
-                                "Hello MyVideoApp",
-                              );
-                            },
-                            child: const Icon(
-                              Icons.share,
-                              color: Colors.white,
-                            )),
+                        // GestureDetector(
+                        //     onTap: () {
+                        //       Share.share(
+                        //         "Hello Babble",
+                        //       );
+                        //     },
+                        //     child: const Icon(
+                        //       Icons.share,
+                        //       color: Colors.white,
+                        //     )),
                       ],
                     ),
                   ),
@@ -239,7 +239,7 @@ class _UserHomeProfileScreenState extends State<UserHomeProfileScreen> {
                               child: Text(
                                 widget.hostData[widget.index].name.toString(),
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.pinkColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: SizeConfig.blockSizeHorizontal * 5.8),
                               ),
@@ -288,7 +288,7 @@ class _UserHomeProfileScreenState extends State<UserHomeProfileScreen> {
                                   Text(
                                     widget.hostData[widget.index].country ?? '',
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.w600,
                                         fontSize: SizeConfig.blockSizeVertical * 1.8),
                                   ),
@@ -530,7 +530,7 @@ class _UserHomeProfileScreenState extends State<UserHomeProfileScreen> {
                         }
                       : () {
                           log("user id :: $loginUserId");
-                          log("Host id $chatHostId");
+                          log("Host id :: ${widget.hostId}");
                           if (createChatRoomController.createChatRoomData?.status == true) {
                             Get.to(
                               () => ChatScreen(
@@ -538,7 +538,7 @@ class _UserHomeProfileScreenState extends State<UserHomeProfileScreen> {
                                 hostImage: widget.hostData[widget.index].image.toString(),
                                 chatRoomId: createChatRoomController.createChatRoomData!.chatTopic!.id.toString(),
                                 senderId: createChatRoomController.createChatRoomData!.chatTopic!.userId.toString(),
-                                receiverId: createChatRoomController.createChatRoomData!.chatTopic!.hostId.toString(),
+                                receiverId: widget.hostId, // old :: createChatRoomController.createChatRoomData!.chatTopic!.hostId.toString()
                                 screenType: 'UserProfileScreen',
                                 type: 1,
                                 callType: 'user',

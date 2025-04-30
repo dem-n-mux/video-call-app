@@ -60,6 +60,11 @@ class _HostMessageListScreenState extends State<HostMessageListScreen> {
           }
         } else {
           await createChatRoomController.createChatRoom(widget.chatThumb[widget.index].id.toString(), loginUserId);
+          print("0000000000000");
+          print(createChatRoomController.createChatRoomData!.chatTopic!.userId.toString());
+          print(createChatRoomController.createChatRoomData!.chatTopic!.hostId.toString());
+          print(loginUserId);
+          print(widget.chatThumb[widget.index].id.toString());
           if (createChatRoomController.createChatRoomData?.status == true) {
             Get.off(() => ChatScreen(
                   hostName: widget.chatThumb[widget.index].name.toString(),

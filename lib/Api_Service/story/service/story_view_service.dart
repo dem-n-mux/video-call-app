@@ -17,7 +17,7 @@ class StoryViewService {
 
       log("queryParameters :::$queryParameters");
       final uri =
-          Uri.https(url, Constant.storyView, queryParameters);
+          Uri.http(url, Constant.storyView, queryParameters);
       log("uri :::$uri");
 
       log(uri.toString());

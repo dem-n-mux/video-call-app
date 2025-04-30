@@ -294,7 +294,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                     },
                     child: const CommonLoginButton(
                       icon: AppIcons.googleIcon,
-                      title: "Login with gmail",
+                      title: "Login with Gmail",
                       padding: 8,
                     ),
                   ),
@@ -347,7 +347,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
 
                           if (fetchUserController.userData?.user?.isHost == true) {
                             await fetchHostController.fetchHost(
-                                0, fcmToken, androidId, androidId, fetchCountry["country"] ?? "", "MyVideoApp User");
+                                0, fcmToken, androidId, androidId, fetchCountry["country"] ?? "", "Babble User");
                             preferences.setString(
                                 "userName", fetchHostController.hostData?.host?.name.toString() ?? "");
                             preferences.setString("userBio", fetchHostController.hostData?.host?.bio.toString() ?? "");
@@ -392,7 +392,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                                 androidId,
                                 (fetchCountry.isEmpty) ? "India" : fetchCountry["country"],
                                 "${Constant.BASE_URL}storage/female.png",
-                                "MyVideoApp User",
+                                "Babble User",
                                 "",
                                 "");
                             preferences.setString(
@@ -433,7 +433,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                   const Text(
                     "By Signing up you will be agree to our",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 17,
                     ),
                   ),
@@ -450,7 +450,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                       Text(
                         " and ",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 17,
                         ),
                       ),
@@ -492,7 +492,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
             androidId,
             (fetchCountry.isEmpty) ? "India" : fetchCountry["country"] ?? "",
             "${Constant.BASE_URL}storage/female.png",
-            "MyVideoApp User",
+            "Babble User",
             "",
             "");
 
@@ -500,7 +500,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
 
         if (fetchUserController.userData?.user?.isHost == true) {
           await fetchHostController.fetchHost(
-              0, fcmToken, androidId, androidId, fetchCountry["country"] ?? "", "MyVideoApp User");
+              0, fcmToken, androidId, androidId, fetchCountry["country"] ?? "", "Babble User");
           preferences.setString("userName", fetchHostController.hostData?.host?.name.toString() ?? "");
           preferences.setString("userBio", fetchHostController.hostData?.host?.bio.toString() ?? "");
           preferences.setString("userImage", fetchHostController.hostData?.host?.image.toString() ?? "");
@@ -536,7 +536,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
               androidId,
               (fetchCountry.isEmpty) ? "India" : fetchCountry["country"],
               "${Constant.BASE_URL}storage/female.png",
-              "MyVideoApp User",
+              "Babble User",
               "",
               "");
           preferences.setString("userName", fetchUserController.userData?.user?.name.toString() ?? "");

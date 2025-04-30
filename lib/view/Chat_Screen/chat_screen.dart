@@ -27,6 +27,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../host/Host Bottom Navigation Bar/host_bottom_navigation_screen.dart';
 import '../user/screens/user_bottom_navigation_screen/user_bottom_navigation_screen.dart';
+import 'fake_chat/fake_demo_call.dart';
 
 class ChatScreen extends StatefulWidget {
   final String callType;
@@ -384,62 +385,135 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
                   ),
                 ),
                 actions: [
-                  AbsorbPointer(
+                  // todo :: temp hided video call option if we are host as host to client video call is not working
+                  //  !isHost ?
+                   AbsorbPointer(
                     absorbing: !videoButtonIs,
                     child: GestureDetector(
-                      onTap: isHost
-                          ? (int.parse(hostCoin.value) >= 20)
-                              ? () async {
-                                  setState(() {
-                                    videoButtonIs = false;
-                                    Future.delayed(const Duration(seconds: 5), () {
-                                      videoButtonIs = true;
-                                    });
-                                  });
-                                  Get.to(() => DemoCall(
-                                        receiverId: widget.receiverId,
-                                        hostName: widget.hostName,
-                                        hostImage: widget.hostImage,
-                                        callType: 'normal',
-                                        videoCallType: (widget.type == 1) ? "user" : "host",
-                                      ));
-                                }
-                              : () {
-                                  Fluttertoast.showToast(
-                                    msg: "Insufficient Balance",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.SNACKBAR,
-                                    backgroundColor: Colors.black.withOpacity(0.35),
-                                    textColor: Colors.white,
-                                    fontSize: 16.0,
-                                  );
-                                }
-                          : (int.parse(userCoin.value) >= 20)
-                              ? () async {
-                                  setState(() {
-                                    videoButtonIs = false;
-                                    Future.delayed(const Duration(seconds: 5), () {
-                                      videoButtonIs = true;
-                                    });
-                                  });
-                                  Get.to(() => DemoCall(
-                                        receiverId: widget.receiverId,
-                                        hostName: widget.hostName,
-                                        hostImage: widget.hostImage,
-                                        callType: 'normal',
-                                        videoCallType: (widget.type == 1) ? "user" : "host",
-                                      ));
-                                }
-                              : () {
-                                  Fluttertoast.showToast(
-                                    msg: "Insufficient Balance",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.SNACKBAR,
-                                    backgroundColor: Colors.black.withOpacity(0.35),
-                                    textColor: Colors.white,
-                                    fontSize: 16.0,
-                                  );
-                                },
+                      onTap: () {
+                        if(isHost) {
+                          if (int.parse(userCoin.value) >= 20) {
+                            if (videoButtonIs) {
+                              setState(() {
+                                videoButtonIs = false;
+                              });
+
+                              Future.delayed(const Duration(seconds: 5), () {
+                                setState(() {
+                                  videoButtonIs = true;
+                                  log("button is active :- $videoButtonIs");
+                                });
+                              });
+
+                              Get.to(() => DemoCall(
+                                receiverId: widget.receiverId,
+                                hostName: widget.hostName,
+                                hostImage: widget.hostImage,
+                                callType: 'normal',
+                                videoCallType: (widget.type == 1) ? "user" : "host",
+                              ));
+                            }
+                          } else {
+                            Fluttertoast.showToast(
+                              msg: "Insufficient Balance",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.SNACKBAR,
+                              backgroundColor: Colors.black.withOpacity(0.35),
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                            );
+                          }
+                        }
+                        else {
+                          if (int.parse(userCoin.value) >= 20) {
+                            if (videoButtonIs) {
+                              setState(() {
+                                videoButtonIs = false;
+                              });
+
+                              Future.delayed(const Duration(seconds: 5), () {
+                                setState(() {
+                                  videoButtonIs = true;
+                                  log("button is active :- $videoButtonIs");
+                                });
+                              });
+
+                              Get.to(() =>
+                                  DemoCall(
+                                    receiverId: widget.receiverId.toString(),
+                                    hostName: widget.hostName.toString(),
+                                    hostImage: widget.hostImage.toString(),
+                                    callType: 'normal',
+                                    videoCallType: (widget.type == 1) ? "user" : "host", //'user',
+                                  ));
+                            }
+                          } else {
+                            Fluttertoast.showToast(
+                              msg: "Insufficient Balance",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.SNACKBAR,
+                              backgroundColor: Colors.black.withOpacity(0.35),
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                            );
+                          }
+                        }
+                      },
+                      // OLD START ---------->>
+                      // onTap: isHost
+                      //     ? (int.parse(hostCoin.value) >= 20)
+                      //         ? () async {
+                      //             setState(() {
+                      //               videoButtonIs = false;
+                      //               Future.delayed(const Duration(seconds: 5), () {
+                      //                 videoButtonIs = true;
+                      //               });
+                      //             });
+                      //             Get.to(() => DemoCall(
+                      //                   receiverId: widget.receiverId,
+                      //                   hostName: widget.hostName,
+                      //                   hostImage: widget.hostImage,
+                      //                   callType: 'normal',
+                      //                   videoCallType: (widget.type == 1) ? "user" : "host",
+                      //                 ));
+                      //           }
+                      //         : () {
+                      //             Fluttertoast.showToast(
+                      //               msg: "Insufficient Balance",
+                      //               toastLength: Toast.LENGTH_SHORT,
+                      //               gravity: ToastGravity.SNACKBAR,
+                      //               backgroundColor: Colors.black.withOpacity(0.35),
+                      //               textColor: Colors.white,
+                      //               fontSize: 16.0,
+                      //             );
+                      //           }
+                      //     : (int.parse(userCoin.value) >= 20)
+                      //         ? () async {
+                      //             setState(() {
+                      //               videoButtonIs = false;
+                      //               Future.delayed(const Duration(seconds: 5), () {
+                      //                 videoButtonIs = true;
+                      //               });
+                      //             });
+                      //             Get.to(() => DemoCall(
+                      //                   receiverId: widget.receiverId,
+                      //                   hostName: widget.hostName,
+                      //                   hostImage: widget.hostImage,
+                      //                   callType: 'normal',
+                      //                   videoCallType: (widget.type == 1) ? "user" : "host",
+                      //                 ));
+                      //           }
+                      //         : () {
+                      //             Fluttertoast.showToast(
+                      //               msg: "Insufficient Balance",
+                      //               toastLength: Toast.LENGTH_SHORT,
+                      //               gravity: ToastGravity.SNACKBAR,
+                      //               backgroundColor: Colors.black.withOpacity(0.35),
+                      //               textColor: Colors.white,
+                      //               fontSize: 16.0,
+                      //             );
+                      //           },
+                      // OLD END ---------->>
                       // onTap: (int.parse(userCoin.value) >= 20)
                       //     ? () async {
                       //         log(widget.senderId);
@@ -493,6 +567,7 @@ class _ChatScreenState extends State<ChatScreen> with SingleTickerProviderStateM
                               ))),
                     ),
                   )
+                   // : SizedBox()
                 ],
               ),
             ),

@@ -16,7 +16,7 @@ class DeleteStoryService {
       "storyId": storyId,
     };
 
-    final uri = Uri.https( url , Constant.deleteStory , queryParameters);
+    final uri = Uri.http( url , Constant.deleteStory , queryParameters);
     http.Response res = await http.delete(
       uri,
       headers: {

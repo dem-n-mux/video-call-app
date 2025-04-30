@@ -51,7 +51,7 @@ class _HostBottomNavigationBarScreenState extends State<HostBottomNavigationBarS
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: screen[hostSelectedIndex],
       bottomNavigationBar: SalomonBottomBar(
         margin: const EdgeInsets.only(left: 28, right: 28, top: 10, bottom: 10),

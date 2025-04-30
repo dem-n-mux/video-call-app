@@ -19,7 +19,7 @@ import 'My_Complain_Ticket_Screen/user_complain_screen.dart';
 import 'Recharge/recharge_coin_screen.dart';
 import 'user_edit_profile.dart';
 import 'user_host_request_screen.dart';
-// todo
+
 class UserProfileScreen extends StatefulWidget {
   final String? message;
   final String? contact;
@@ -91,7 +91,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          "Sign out from MyVideoApp",
+                          "Sign out from Babble",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -102,7 +102,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           height: 10,
                         ),
                         const Text(
-                          "Are you sure you would like to sign out of your MyVideoApp account?",
+                          "Are you sure you would like to sign out of your Babble account?",
                           style: TextStyle(
                             color: AppColors.grey,
                             fontSize: 14,
@@ -300,7 +300,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: AppColors.appBarColor,
           centerTitle: true,
@@ -424,125 +424,129 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                // InkWell(
-                //   onTap: () {
-                //     Get.to(() => const RechargeCoinScreen());
-                //   },
-                //   highlightColor: Colors.transparent,
-                //   splashColor: Colors.transparent,
-                //   child: Container(
-                //     margin: const EdgeInsets.symmetric(horizontal: 15),
-                //     padding: const EdgeInsets.all(2),
-                //     height: height / 8.5,
-                //     width: width,
-                //     decoration: BoxDecoration(
-                //         borderRadius: BorderRadius.circular(15),
-                //         gradient: const LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
-                //           AppColors.pinkColor,
-                //           AppColors.transparentColor,
-                //           AppColors.transparentColor,
-                //           AppColors.transparentColor,
-                //           AppColors.pinkColor
-                //         ])),
-                //     child: Container(
-                //       decoration: BoxDecoration(
-                //           gradient: const LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
-                //             Color(0xff1E1D1D),
-                //             Color(0xff291F22),
-                //             Color(0xff291F22),
-                //             Color(0xff1E1D1D),
-                //             Color(0xff332127),
-                //           ]),
-                //           borderRadius: BorderRadius.circular(12)),
-                //       width: Get.width,
-                //       child: Column(
-                //         mainAxisAlignment: MainAxisAlignment.center,
-                //         children: [
-                //           Row(
-                //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //             children: [
-                //               const Text(
-                //                 "Balance",
-                //                 style: TextStyle(
-                //                   color: AppColors.pinkColor,
-                //                   fontWeight: FontWeight.w700,
-                //                   fontSize: 22,
-                //                 ),
-                //               ),
-                //               const SizedBox(
-                //                 height: 50,
-                //                 child: VerticalDivider(color: Colors.black, thickness: 1),
-                //               ),
-                //               SizedBox(
-                //                 child: Row(
-                //                   children: [
-                //                     Image.asset(
-                //                       AppImages.diamond,
-                //                       height: 28,
-                //                     ),
-                //                     const SizedBox(
-                //                       width: 5,
-                //                     ),
-                //                     Obx(() => Text(
-                //                           userCoin.value,
-                //                           style: const TextStyle(
-                //                             color: AppColors.lightPinkColor,
-                //                             fontWeight: FontWeight.bold,
-                //                             fontSize: 22,
-                //                           ),
-                //                         )),
-                //                   ],
-                //                 ),
-                //               ),
-                //             ],
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
-                // Container(
-                //   alignment: Alignment.center,
-                //   height: height / 13,
-                //   width: width,
-                //   margin: const EdgeInsets.only(left: 15, right: 15),
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(10),
-                //       image: const DecorationImage(fit: BoxFit.fill, image: AssetImage(AppImages.rechargeBox))),
-                //   child: ListTile(
-                //     onTap: () {
-                //       Get.to(() => const RechargeCoinScreen());
-                //     },
-                //     leading: Container(
-                //       margin: const EdgeInsets.only(
-                //         left: 5,
-                //       ),
-                //       height: 26,
-                //       child: Image.asset(
-                //         AppImages.singleCoin,
-                //       ),
-                //     ),
-                //     title: const Text(
-                //       "Recharge Coins",
-                //       style: TextStyle(
-                //         fontWeight: FontWeight.w500,
-                //         fontSize: 18,
-                //         color: Color(0xffFFC86C),
-                //       ),
-                //     ),
-                //     trailing: const Icon(
-                //       Icons.arrow_forward_ios_sharp,
-                //       color: Color(0xffFFB842),
-                //       size: 20,
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(
-                //   height: 10,
-                // ),
+                InkWell(
+                  onTap: () {
+                    Get.to(() => const RechargeCoinScreen());
+                  },
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.all(2),
+                    height: height / 8.5,
+                    width: width,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        gradient: const LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+                          AppColors.pinkColor,
+                          AppColors.transparentColor,
+                          AppColors.transparentColor,
+                          AppColors.transparentColor,
+                          AppColors.pinkColor
+                        ])),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: const LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
+                            Color(0xffFFE4EC), // Light blush
+                            Color(0xffFFD6E6), // Soft pink
+                            Color(0xffFFD6E6), // Soft pink repeated
+                            Color(0xffFFE4EC), // Light blush again
+                            Color(0xffFFCCDB), // Slightly deeper pink
+                          ]
+                          ),
+                          borderRadius: BorderRadius.circular(12)),
+                      width: Get.width,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                "Balance",
+                                style: TextStyle(
+                                  color: AppColors.pinkColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 22,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 50,
+                                child: VerticalDivider(color: Colors.black, thickness: 1),
+                              ),
+                              SizedBox(
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 8.0),
+                                      child: Image.asset(
+                                        AppImages.diamond,
+                                        height: 28,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Obx(() => Text(
+                                          userCoin.value,
+                                          style: const TextStyle(
+                                            color: AppColors.pinkColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 22,
+                                          ),
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: height / 13,
+                  width: width,
+                  margin: const EdgeInsets.only(left: 15, right: 15),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: const DecorationImage(fit: BoxFit.fill, image: AssetImage(AppImages.rechargeBox))),
+                  child: ListTile(
+                    onTap: () {
+                      Get.to(() => const RechargeCoinScreen());
+                    },
+                    leading: Container(
+                      margin: const EdgeInsets.only(
+                        left: 5,
+                      ),
+                      height: 26,
+                      child: Image.asset(
+                        AppImages.singleCoin,
+                      ),
+                    ),
+                    title: const Text(
+                      "Recharge Coins",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        color: Color(0xffFFC86C),
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_sharp,
+                      color: Color(0xffFFB842),
+                      size: 20,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 SizedBox(
                   child: ListView.separated(
                     separatorBuilder: (context, i) {
@@ -562,9 +566,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           width: width,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey.shade900,
+                            color: Colors.white,
                           ),
                           child: ListTile(
+
                             onTap: userLogin[i].onTap,
                             leading: Container(
                               alignment: Alignment.center,
@@ -579,7 +584,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             title: Text(
                               userLogin[i].name,
                               style: const TextStyle(
-                                color: AppColors.lightPinkColor,
+                                color: AppColors.blackColor,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 18,
                               ),
@@ -587,7 +592,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                             trailing: const Icon(
                               Icons.arrow_forward_ios_sharp,
                               size: 20,
-                              color: AppColors.lightPinkColor,
+                              color: AppColors.blackColor,
                             ),
                           ),
                         ),

@@ -18,7 +18,7 @@ class  UserUpdateNotificationService {
         "type": type,
       };
 
-      final uri = Uri.https(url,Constant.userUpdateNotification,queryParameters);
+      final uri = Uri.http(url,Constant.userUpdateNotification,queryParameters);
 
       final response = await client.post(uri,
         headers: <String, String>{

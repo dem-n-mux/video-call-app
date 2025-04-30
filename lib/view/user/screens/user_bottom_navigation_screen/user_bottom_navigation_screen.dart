@@ -65,7 +65,7 @@ class _UserBottomNavigationScreenState extends State<UserBottomNavigationScreen>
           return false;
         },
         child: Scaffold(
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.white,
             body: screen[selectedIndex],
             bottomNavigationBar: SalomonBottomBar(
               currentIndex: selectedIndex,

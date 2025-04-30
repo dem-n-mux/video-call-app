@@ -49,7 +49,7 @@ Future<void> backgroundNotification(RemoteMessage message) async {
   );
   var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
     '0',
-    'MyVideoApp',
+    'Babble',
     channelDescription: 'hello',
     importance: Importance.max,
     icon: '@mipmap/ic_launcher',
@@ -106,9 +106,9 @@ Future<void> main() async {
   };
 
   ///Real User Data ///
-  // userName = preferences.getString("getUserName") ?? "MyVideoApp User";
+  // userName = preferences.getString("getUserName") ?? "Babble User";
   // userGender = preferences.getString("userGender") ?? "Female";
-  // userBio = preferences.getString("getUserBio") ?? "I am MyVideoApp user";
+  // userBio = preferences.getString("getUserBio") ?? "I am Babble user";
   // userImage = preferences.getString("userName") ?? AppImages.userProfile;
   // userDob = preferences.getString("getUserDob") ?? "2023-03-10 11:02:15.252970";
   // loginUserId = preferences.getString("loginUserId") ?? '';

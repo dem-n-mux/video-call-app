@@ -46,7 +46,7 @@ class _HostComplainScreenState extends State<HostComplainScreen> {
           return false;
         },
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0,
             centerTitle: true,

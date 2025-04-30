@@ -30,7 +30,7 @@ class HostCreditHistoryService {
       }
 
 
-      final uri = Uri.https(url,Constant.debitHistory,queryParameters);
+      final uri = Uri.http(url,Constant.debitHistory,queryParameters);
 
       log("credit uri :-  $uri");
 

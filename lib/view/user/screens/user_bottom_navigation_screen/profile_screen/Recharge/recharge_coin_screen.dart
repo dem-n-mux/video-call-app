@@ -107,11 +107,11 @@ class _RechargeCoinScreenState extends State<RechargeCoinScreen> {
                                   begin: Alignment.centerLeft,
                                   end: Alignment.centerRight,
                                   colors: [
-                                    Color(0xff1E1D1D),
-                                    Color(0xff291F22),
-                                    Color(0xff291F22),
-                                    Color(0xff1E1D1D),
-                                    Color(0xff332127),
+                                    Color(0xffFFE4EC), // Light blush
+                                    Color(0xffFFD6E6), // Soft pink
+                                    Color(0xffFFD6E6), // Soft pink repeated
+                                    Color(0xffFFE4EC), // Light blush again
+                                    Color(0xffFFCCDB), // Slightly deeper pink
                                   ]),
                               borderRadius: BorderRadius.circular(12)),
                           width: Get.width,
@@ -141,7 +141,7 @@ class _RechargeCoinScreenState extends State<RechargeCoinScreen> {
                                         () => Text(
                                           userCoin.value,
                                           style: const TextStyle(
-                                            color: AppColors.lightPinkColor,
+                                            color: AppColors.pinkColor,
                                             fontWeight: FontWeight.w700,
                                             fontSize: 22,
                                           ),
@@ -173,7 +173,7 @@ class _RechargeCoinScreenState extends State<RechargeCoinScreen> {
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.lightPinkColor,
+                              color: AppColors.pinkColor,
                             ),
                           )),
                       const SizedBox(
@@ -237,7 +237,7 @@ class _RechargeCoinScreenState extends State<RechargeCoinScreen> {
                                           Text(
                                             "${fetchCoinPlanController.coinPlanList[index].coin.toString()} coin",
                                             style: const TextStyle(
-                                              color: AppColors.lightPinkColor,
+                                              color: AppColors.pinkColor,
                                               fontWeight: FontWeight.w400,
                                               fontSize: 18,
                                             ),

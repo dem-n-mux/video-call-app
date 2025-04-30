@@ -78,7 +78,7 @@ class _HostHomeScreenState extends State<HostHomeScreen> {
           return false;
         },
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.white,
           body: Container(
             height: height,
             width: width,
@@ -133,7 +133,7 @@ class _HostHomeScreenState extends State<HostHomeScreen> {
                                       () => Text(
                                         hostCoin.value,
                                         style: const TextStyle(
-                                          color: Colors.white,
+                                          color: AppColors.pinkColor,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -187,7 +187,7 @@ class _HostHomeScreenState extends State<HostHomeScreen> {
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 22,
-                                      color: Colors.white,
+                                      color: AppColors.pinkColor,
                                     ),
                                   ),
                                   const SizedBox(
@@ -777,7 +777,7 @@ class _HostHomeScreenState extends State<HostHomeScreen> {
                           Text(
                             "Note :",
                             style: TextStyle(
-                              color: AppColors.whiteColor,
+                              color: AppColors.blackColor,
                               fontWeight: FontWeight.w700,
                               fontSize: 20,
                             ),

@@ -60,44 +60,44 @@ class _MessageScreenState extends State<MessageScreen> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
-          actions: [
-            (search)
-                ? IconButton(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onPressed: () {
-                      setState(() {
-                        searchController.clear();
-                        search = false;
-                        listVisible = false;
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.clear,
-                      color: AppColors.pinkColor,
-                      size: 20,
-                    ),
-                  )
-                : IconButton(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onPressed: () {
-                      setState(() {
-                        search = true;
-                        listVisible = true;
-                      });
-                    },
-                    icon: const Icon(
-                      Icons.search,
-                      color: AppColors.pinkColor,
-                      size: 20,
-                    ),
-                  ),
-          ],
+          // actions: [
+          //   (search)
+          //       ? IconButton(
+          //           splashColor: Colors.transparent,
+          //           highlightColor: Colors.transparent,
+          //           onPressed: () {
+          //             setState(() {
+          //               searchController.clear();
+          //               search = false;
+          //               listVisible = false;
+          //             });
+          //           },
+          //           icon: const Icon(
+          //             Icons.clear,
+          //             color: AppColors.pinkColor,
+          //             size: 20,
+          //           ),
+          //         )
+          //       : IconButton(
+          //           splashColor: Colors.transparent,
+          //           highlightColor: Colors.transparent,
+          //           onPressed: () {
+          //             setState(() {
+          //               search = true;
+          //               listVisible = true;
+          //             });
+          //           },
+          //           icon: const Icon(
+          //             Icons.search,
+          //             color: AppColors.pinkColor,
+          //             size: 20,
+          //           ),
+          //         ),
+          // ],
           backgroundColor: AppColors.appBarColor,
           title: (search)
               ? TextFormField(

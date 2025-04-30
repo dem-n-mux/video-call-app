@@ -54,7 +54,7 @@
 //         amount: amount,
 //         customer: customer,
 //         paymentOptions: "ussd, card, barter, pay attitude",
-//         customization: Customization(title: "MyVideoApp"),
+//         customization: Customization(title: "Babble"),
 //         isTestMode: true);
 //     log("Flutter Wave Finish");
 //     final ChargeResponse response = await flutterwave.charge();

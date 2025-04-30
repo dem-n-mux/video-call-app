@@ -78,11 +78,11 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
       },
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(80),
+          preferredSize: const Size.fromHeight(50), // 80
           child: Padding(
-            padding: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 0),
             child: AppBar(
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.white,
               elevation: 0,
               leadingWidth: SizeConfig.blockSizeHorizontal * 14,
               leading: Row(
@@ -98,7 +98,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 ],
               ),
               title: GradientText(
-                "MyVideoApp",
+                "Babble",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: SizeConfig.blockSizeHorizontal * 7),
                 gradient: const LinearGradient(colors: [AppColors.pinkColor, Color(0xff573777)]),
               ),
@@ -321,7 +321,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             ),
           ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         body: Obx(() {
           if (hostThumbController.isLoading.value) {
             return Shimmer.fromColors(
@@ -466,7 +466,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                                           ),
                                           Text(
                                             getHostStoryController.hostStoryList[index].hostName.toString(),
-                                            style: const TextStyle(color: Colors.white, fontSize: 14),
+                                            style: const TextStyle(color: AppColors.pinkColor, fontSize: 14),
                                           ),
                                         ],
                                       ).paddingOnly(left: 12);
@@ -485,7 +485,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                   ];
                 },
                 body: RefreshIndicator(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.white,
                   color: AppColors.pinkColor,
                   onRefresh: _refresh,
                   child: SingleChildScrollView(

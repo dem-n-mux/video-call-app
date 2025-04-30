@@ -679,7 +679,7 @@ class _UserJoinStreamingState extends State<UserJoinStreaming> with SingleTicker
                               padding: const EdgeInsets.only(top: 20),
                               child: GestureDetector(
                                 onTap: () {
-                                  Share.share("Hello MyVideoApp User");
+                                  Share.share("Hello Babble User");
                                 },
                                 child: Container(
                                   alignment: Alignment.center,

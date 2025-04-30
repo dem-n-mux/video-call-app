@@ -72,7 +72,7 @@ class _MessageListScreenState extends State<MessageListScreen> {
                   chatRoomId: createChatRoomController.createChatRoomData!.chatTopic!.id.toString(),
                   senderId: createChatRoomController.createChatRoomData!.chatTopic!.userId.toString(),
                   hostImage: widget.chatThumb![widget.index].image.toString(),
-                  receiverId: createChatRoomController.createChatRoomData!.chatTopic!.hostId.toString(),
+                  receiverId: widget.chatThumb![widget.index].id.toString(), // old :: createChatRoomController.createChatRoomData!.chatTopic!.hostId.toString(),
                   screenType: 'UserScreen',
                   type: 1,
                   callType: 'user',

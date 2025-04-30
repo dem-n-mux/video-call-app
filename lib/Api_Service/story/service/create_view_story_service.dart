@@ -16,7 +16,7 @@ class CreateViewStoryService {
         "userId": userId,
       };
 
-      final uri = Uri.https(url, Constant.createViewStory, queryParameters);
+      final uri = Uri.http(url, Constant.createViewStory, queryParameters);
 
       http.Response response = await client.patch(uri, headers: {"key": Constant.SECRET_KEY});
 

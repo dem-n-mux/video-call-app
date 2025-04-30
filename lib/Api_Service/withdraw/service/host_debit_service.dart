@@ -28,7 +28,7 @@ class HostDebitHistoryService {
       }
 
 
-      final uri = Uri.https(url,Constant.hostDebitHistory,queryParameters);
+      final uri = Uri.http(url,Constant.hostDebitHistory,queryParameters);
 
       log("debit uri :-  $uri");
 

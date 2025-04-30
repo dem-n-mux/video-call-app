@@ -16,7 +16,7 @@ class  CreateUserViewStoryService {
         "storyId" : storyId,
       };
 
-      final uri = Uri.https(url, Constant.createUserViewStory, queryParameters);
+      final uri = Uri.http(url, Constant.createUserViewStory, queryParameters);
 
       final response = await client.post(uri,
           headers: <String, String>{

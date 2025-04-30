@@ -33,14 +33,14 @@ class SignupTextField extends StatelessWidget {
       child: TextFormField(
         obscureText: obscureText ?? false,
         onEditingComplete: onEditingComplete,
-        style: TextStyle(color: const Color(0xff655C5F),fontSize: SizeConfig.blockSizeVertical* 2.5),
-        cursorColor: const Color(0xff655C5F),
+        style: TextStyle(color: Colors.black,fontSize: SizeConfig.blockSizeVertical* 2.5),
+        cursorColor: Colors.black,
         decoration:  InputDecoration(
           suffixIcon: suffixIcon,
           border: InputBorder.none,
           contentPadding: EdgeInsets.zero,
           hintText: title,
-          hintStyle: TextStyle(color: const Color(0xff655C5F),fontSize: SizeConfig.blockSizeVertical* 2.5)
+          hintStyle: TextStyle(color: Colors.black,fontSize: SizeConfig.blockSizeVertical* 2.5)
         ),
       ),
     );

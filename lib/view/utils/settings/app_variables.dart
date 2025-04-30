@@ -94,9 +94,9 @@ List commentBlankImage = ["assets/images/flairImage.png"];
 bool visibleHost = true;
 
 ////// Real User Data/////
-String userName = "MyVideoApp User";
+String userName = "Babble User";
 String userGender = "Female";
-String userBio = "I m MyVideoApp user";
+String userBio = "I m Babble user";
 String userImage = AppImages.userProfile;
 String userDob = "2023-03-10 11:02:15.252970";
 String countryProfile = "India";

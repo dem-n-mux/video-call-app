@@ -17,7 +17,7 @@ class DeleteAlbumService {
       };
 
       final uri =
-          Uri.https(url, Constant.deleteAlbum, queryParameters);
+          Uri.http(url, Constant.deleteAlbum, queryParameters);
 
       log(uri.toString());
 

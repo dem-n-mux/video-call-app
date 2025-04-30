@@ -99,7 +99,7 @@ class _UserMatchedCallingScreenState extends State<UserMatchedCallingScreen> {
                     children: [
                       const SizedBox(height: 30),
                       const Text(
-                        "YOU'RE",
+                        "HURRAY!! YOU",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 24,
@@ -108,7 +108,7 @@ class _UserMatchedCallingScreenState extends State<UserMatchedCallingScreen> {
                       ),
                       const SizedBox(height: 1),
                       const Text(
-                        "FRIENDS!",
+                        "FOUND SOMEONE!!",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 27,
@@ -117,7 +117,7 @@ class _UserMatchedCallingScreenState extends State<UserMatchedCallingScreen> {
                       ),
                       const SizedBox(height: 35),
                       const Text(
-                        "You and MyVideoApp User have liked each other",
+                        "You both can video chat with each other!",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 16,

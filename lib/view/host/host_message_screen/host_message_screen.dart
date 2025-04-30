@@ -56,7 +56,7 @@ class _HostMessageScreenState extends State<HostMessageScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,

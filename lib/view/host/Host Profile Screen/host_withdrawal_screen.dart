@@ -141,7 +141,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                           style: const TextStyle(
                             fontSize: 27,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.lightPinkColor,
+                            color: AppColors.pinkColor,
                           ),
                         ),
                       ),
@@ -165,7 +165,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                           text: "Minimum 10\$ Withdraw",
                           style: TextStyle(
                             fontSize: 15,
-                            color: AppColors.lightPinkColor,
+                            color: AppColors.pinkColor,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -219,7 +219,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                         Text(
                           "\$ $autoCalculatedText",
                           style: const TextStyle(
-                              color: AppColors.lightPinkColor,
+                              color: AppColors.pinkColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
@@ -232,7 +232,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                   const Text(
                     "Coin to Withdraw",
                     style: TextStyle(
-                      color: AppColors.lightPinkColor,
+                      color: AppColors.pinkColor,
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                     ),
@@ -260,7 +260,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                             const Text(
                               "Payment details",
                               style: TextStyle(
-                                color: AppColors.lightPinkColor,
+                                color: AppColors.pinkColor,
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -321,7 +321,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                                             "Select Withdraw Method",
                                                             style: TextStyle(
                                                                 color: AppColors
-                                                                    .lightPinkColor,
+                                                                    .pinkColor,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,
@@ -704,7 +704,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                                                           .toString(),
                                                                       style: const TextStyle(
                                                                           color: AppColors
-                                                                              .lightPinkColor,
+                                                                              .pinkColor,
                                                                           fontSize:
                                                                               18,
                                                                           fontWeight:
@@ -734,7 +734,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                     child: ListTile(
                                       title: Text(selectedWithdrawMethod,
                                           style: const TextStyle(
-                                              color: AppColors.lightPinkColor,
+                                              color: AppColors.pinkColor,
                                               fontSize: 18)),
                                       trailing: const Icon(
                                           Icons.keyboard_arrow_down_outlined,
@@ -770,7 +770,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                   "• ${withdrawTypeController.getWithdrawTypeModel!.withdraw![withdrawSelectedIndex].details![index].toString()}",
                                   style: const TextStyle(
                                       fontSize: 18,
-                                      color: AppColors.lightPinkColor),
+                                      color: AppColors.pinkColor),
                                 );
                               },
                             ),
@@ -790,7 +790,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                       child: Text(
                                         "Description",
                                         style: TextStyle(
-                                          color: AppColors.lightPinkColor,
+                                          color: AppColors.pinkColor,
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -809,11 +809,11 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                       child: TextFormField(
                                         onEditingComplete: () =>
                                             FocusScope.of(context).nextFocus(),
-                                        cursorColor: AppColors.lightPinkColor,
+                                        cursorColor: AppColors.pinkColor,
                                         controller: withdrawController,
                                         style: const TextStyle(
                                           decoration: TextDecoration.none,
-                                          color: AppColors.lightPinkColor,
+                                          color: AppColors.pinkColor,
                                           fontSize: 18,
                                         ),
                                         maxLines: 5,
@@ -823,7 +823,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                           border: InputBorder.none,
                                           hintText: "Enter your details",
                                           hintStyle: TextStyle(
-                                            color: AppColors.lightPinkColor,
+                                            color: AppColors.pinkColor,
                                             fontSize: 18,
                                           ),
                                         ),
@@ -914,7 +914,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 20,
-                                        color: AppColors.lightPinkColor,
+                                        color: AppColors.pinkColor,
                                       ),
                                     ),
                                     const SizedBox(
@@ -925,7 +925,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 20,
-                                        color: AppColors.lightPinkColor,
+                                        color: AppColors.pinkColor,
                                       ),
                                     ),
                                     const SizedBox(
@@ -1070,7 +1070,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                       //                         style: TextStyle(
                       //                           fontWeight: FontWeight.w400,
                       //                           fontSize: 20,
-                      //                           color: AppColors.lightPinkColor,
+                      //                           color: AppColors.pinkColor,
                       //                         ),
                       //                       ),
                       //                       const SizedBox(
@@ -1081,7 +1081,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                       //                         style: const TextStyle(
                       //                           fontWeight: FontWeight.w400,
                       //                           fontSize: 20,
-                      //                           color: AppColors.lightPinkColor,
+                      //                           color: AppColors.pinkColor,
                       //                         ),
                       //                       ),
                       //                       const SizedBox(
@@ -1232,7 +1232,7 @@ class _HostWithdrawScreenState extends State<HostWithdrawScreen> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 20,
-                                  color: AppColors.lightPinkColor,
+                                  color: AppColors.pinkColor,
                                 ),
                               ),
                               Padding(

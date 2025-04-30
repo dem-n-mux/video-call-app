@@ -60,7 +60,7 @@ class _HostLoginScreenState extends State<HostLoginScreen> {
                   ),
                   const CommonLoginButton(
                     icon: AppIcons.googleIcon,
-                    title: "Login with gmail",
+                    title: "Login with Gmail",
                     padding: 8,
                   ),
                   CommonLoginButton(

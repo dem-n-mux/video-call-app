@@ -1,4 +1,4 @@
-package com.app.flirtzy
+package com.app.babble
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.android.FlutterFragmentActivity;

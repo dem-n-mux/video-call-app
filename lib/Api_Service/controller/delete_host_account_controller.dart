@@ -13,7 +13,7 @@ class DeleteHostAccountController extends GetxController {
     try {
       String uri = Constant.getDomainFromURL(Constant.BASE_URL);
       final queryParameters = {"hostId": hostId};
-      var url = Uri.https(uri, Constant.deleteHostAccount, queryParameters);
+      var url = Uri.http(uri, Constant.deleteHostAccount, queryParameters);
       log("Delete host Account url ::$url");
       final header = {"Key": Constant.SECRET_KEY};
       var response = await http.delete(url, headers: header);

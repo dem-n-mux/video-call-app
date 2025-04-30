@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:751966710179:android:61336f6fab3ef13bc2d216",
         "android_client_info": {
-          "package_name": "com.app.flirtzy"
+          "package_name": "com.app.babble"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "751966710179-bf5ld5bmgf8tsr8bdnhk28bjkct9q4ke.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.app.flirtzy",
+            "package_name": "com.app.babble",
             "certificate_hash": "3b790de861ad4d9124fdc4e8afca995d3357f738"
           }
         },
