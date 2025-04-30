@@ -40,3 +40,4 @@ it should have java 17.0.12 2024-07-16 LTS for Android toolchain
 #### if java version is greater 
 
 flutter config --jdk-dir "C:\Program Files\Java\jdk-17"
+ 
