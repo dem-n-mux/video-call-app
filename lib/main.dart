@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -137,6 +139,13 @@ Future<void> main() async {
   loveId = preferences.getString("loveId") ?? " ";
 
   runApp(const MyApp());
+
+  WidgetsBinding.instance.addPostFrameCallback((callback) async {
+    if(Platform.isAndroid) {
+      await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    }
+  });
+
 }
 ///////// ================================
 
