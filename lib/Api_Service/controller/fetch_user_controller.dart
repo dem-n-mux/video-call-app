@@ -14,4 +14,16 @@ class FetchUserController extends GetxController {
     await FetchUserService.fetchUser(loginType, fcmToken, identity, email, country, image, name, age, gender);
     log("Fetch User: ${jsonEncode(userData)}");
   }
+
+  Future signUpUser(int loginType, String fcmToken, String identity, String email, String country, String image,
+      String name, String age, String gender, String password, String? referredBy) async {
+    userData =
+    await FetchUserService.signUpUser(loginType, fcmToken, identity, email, country, image, name, age, gender, password, referredBy);
+    log("Signup User: ${jsonEncode(userData)}");
+  }
+
+  Future logInUser(String email, String password) async {
+    userData = await FetchUserService.logInUser(email, password);
+    log("Login User: ${jsonEncode(userData)}");
+  }
 }

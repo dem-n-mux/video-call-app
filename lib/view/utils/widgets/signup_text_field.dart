@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hokoo_flutter/view/utils/settings/app_colors.dart';
 import 'package:hokoo_flutter/view/utils/widgets/size_configuration.dart';
-
 
 class SignupTextField extends StatelessWidget {
   final String title;
   final void Function()? onEditingComplete;
   final bool? obscureText;
   final Widget? suffixIcon;
-
+  final TextEditingController? controller;
 
   const SignupTextField(
       {Key? key,
-      required this.title, this.onEditingComplete, this.obscureText, this.suffixIcon,})
+      required this.title, this.onEditingComplete, this.obscureText, this.suffixIcon, this.controller})
       : super(key: key);
 
   @override
@@ -25,25 +25,24 @@ class SignupTextField extends StatelessWidget {
         left: SizeConfig.blockSizeHorizontal * 4,
       ),
       decoration: BoxDecoration(
-          gradient:  LinearGradient(
-              begin: FractionalOffset.centerLeft,
-              end: FractionalOffset.centerRight,
-              colors: [const Color(0xff232323),const Color(0xff232323),const Color(0xff32262A).withOpacity(0.70)]),
+         color: AppColors.grey,
           borderRadius: BorderRadius.circular(12)),
-      child: TextFormField(
-        obscureText: obscureText ?? false,
-        onEditingComplete: onEditingComplete,
-        style: TextStyle(color: Colors.black,fontSize: SizeConfig.blockSizeVertical* 2.5),
-        cursorColor: Colors.black,
-        decoration:  InputDecoration(
-          suffixIcon: suffixIcon,
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
-          hintText: title,
-          hintStyle: TextStyle(color: Colors.black,fontSize: SizeConfig.blockSizeVertical* 2.5)
+      child: Center(
+        child: TextFormField(
+          controller: controller,
+          obscureText: obscureText ?? false,
+          onEditingComplete: onEditingComplete,
+          style: const TextStyle(color: Colors.white),
+          cursorColor: Colors.black,
+          decoration:  InputDecoration(
+            suffixIcon: suffixIcon,
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.zero,
+            hintText: title,
+            hintStyle: const TextStyle(color: Colors.white)
+          ),
         ),
       ),
     );
   }
 }
-

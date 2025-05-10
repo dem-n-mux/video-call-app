@@ -30,6 +30,11 @@ class AddProfileController extends GetxController {
   String? birthCountry1;
   String? gender;
 
+  String? name;
+  String? email;
+  String? password;
+  String? referredBy;
+
   final List<String> genderItems = [
     'Male',
     'Female',
@@ -104,6 +109,30 @@ class AddProfileController extends GetxController {
     selectedGender = value;
     update();
     log(selectedGender.toString());
+  }
+
+  onChangedName(String value) {
+    name = value;
+    update();
+    log(name.toString());
+  }
+
+  onChangedEmail(String value) {
+    email = value;
+    update();
+    log(email.toString());
+  }
+
+  onChangedPassword(String value) {
+    password = value;
+    update();
+    log(password.toString());
+  }
+
+  onChangedReferredBy(String value) {
+    referredBy = value;
+    update();
+    log(referredBy.toString());
   }
 
   onChangedBirthCountry(String? value) {
@@ -328,6 +357,219 @@ class AddProfileController extends GetxController {
       }
     }
     // Get.offAll(() => const UserBottomNavigationScreen());
+  }
+
+  onClickSaveBtnForCustom() async {
+    isLoading = true;
+    update();
+    await Fluttertoast.showToast(
+      msg: "Please Wait...",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black.withOpacity(0.35),
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+
+    isDisable = false;
+    update();
+    if (countryProfile.isEmpty || name == null || name == "" || email == null || email == "" || password == null || password == "" ) {
+      isLoading = false;
+      update();
+      await Fluttertoast.showToast(
+        msg: "Please enter all details...",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black.withOpacity(0.35),
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      isLoading = false;
+      update();
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setBool("isBottom", true);
+      isBottom = preferences.getBool('isBottom')!;
+      await fetchUserController.signUpUser(
+        3,
+        fcmToken,
+        email ?? "",
+        email ?? "",
+        countryProfile,
+        selectedGender == 0 ? "${Constant.BASE_URL}storage/male.png" : "${Constant.BASE_URL}storage/female.png",
+        name ?? "Babble User",
+        currentAge.toString(),
+        selectedGender == 0 ? "Male" : "Female",
+        password ?? "",
+        referredBy
+      );
+      preferences.setString("userEmail", androidId);
+      if (fetchUserController.userData?.status ?? false) {
+        /// Is host ture
+        if (fetchUserController.userData?.user?.isHost == true) {
+          log("Get is host true");
+          await fetchHostController.fetchHost(0, fcmToken, androidId, androidId,
+              fetchUserController.userData?.user?.country ?? '', fetchUserController.userData?.user?.name ?? "");
+          //------------------------
+          preferences.setBool("hostIsBlock", fetchHostController.hostData?.host?.isBlock ?? false);
+          preferences.setBool("isHost", true);
+          preferences.setBool("isLogin", true);
+          preferences.setString("userName", fetchHostController.hostData?.host?.name.toString() ?? '');
+          preferences.setString("userCoin", fetchHostController.hostData?.host?.coin.toString() ?? '');
+          preferences.setString("userImage", fetchHostController.hostData?.host?.image.toString() ?? "");
+          preferences.setString("getHostCoverImage", fetchHostController.hostData?.host?.coverImage.toString() ?? '');
+          preferences.setString("userBio", fetchHostController.hostData?.host?.bio.toString() ?? '');
+          preferences.setString("userGender", fetchHostController.hostData?.host?.gender.toString() ?? '');
+          preferences.setString("loginUserId", fetchHostController.hostData?.host?.id.toString() ?? "");
+          preferences.setString("uniqueID", fetchHostController.hostData?.host?.uniqueID ?? "");
+          //----------------------------
+          isHost = preferences.getBool("isHost") ?? false;
+          hostIsBlock = preferences.getBool("hostIsBlock") ?? false;
+          userName = preferences.getString("userName") ?? "";
+          userCoin.value = preferences.getString("userCoin") ?? "";
+          userImage = preferences.getString("userImage") ?? "";
+          hostCoverImage = preferences.getString("getHostCoverImage") ?? "";
+          userBio = preferences.getString("userBio") ?? "";
+          uniqueId = preferences.getString("uniqueID") ?? "";
+          userGender = preferences.getString("userGender") ?? "";
+          loginUserId = preferences.getString("loginUserId") ?? "";
+          //----------------------------
+          selectedIndex = 0;
+          Get.off(() => const HostBottomNavigationBarScreen());
+        }
+        else {
+          isLoading = false;
+          update();
+          preferences.setBool("isLogin", true);
+          preferences.setString("getUserName", fetchUserController.userData?.user?.name.toString() ?? "");
+          preferences.setString("getUserBio", fetchUserController.userData?.user?.bio.toString() ?? "");
+          preferences.setString("getUserImage", fetchUserController.userData?.user?.image.toString() ?? "");
+          preferences.setString("loginUserId", fetchUserController.userData?.user?.id.toString() ?? "");
+          preferences.setString("userGender", fetchUserController.userData?.user?.gender.toString() ?? "");
+          preferences.setString("userCoin", fetchUserController.userData?.user?.coin.toString() ?? "");
+          preferences.setBool("userIsBlock", fetchUserController.userData?.user?.isBlock ?? false);
+          preferences.setBool("isHost", fetchUserController.userData?.user?.isHost ?? false);
+          preferences.setString("uniqueID", fetchUserController.userData?.user?.uniqueID ?? "");
+          //--------------------------------------------
+          userName = preferences.getString("getUserName") ?? "";
+          userBio = preferences.getString("getUserBio") ?? "";
+          userImage = preferences.getString("getUserImage") ?? "";
+          loginUserId = preferences.getString("loginUserId") ?? "";
+          userGender = preferences.getString("userGender") ?? "";
+          uniqueId = preferences.getString("uniqueID") ?? "";
+          isHost = preferences.getBool("isHost") ?? false;
+          userIsBlock = preferences.getBool("userIsBlock") ?? false;
+          userCoin.value = preferences.getString("userCoin") ?? "";
+          //---------------------------------------------
+          selectedIndex = 0;
+          Get.off(() => const UserBottomNavigationScreen());
+        }
+      }
+    }
+  }
+
+  onClickSaveBtnForLogin() async {
+    isLoading = true;
+    update();
+    await Fluttertoast.showToast(
+      msg: "Please Wait...",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black.withOpacity(0.35),
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+
+    isDisable = false;
+    update();
+    if (email == null || email == "" || password == null || password == "" ) {
+      isLoading = false;
+      update();
+      await Fluttertoast.showToast(
+        msg: "Please enter all details...",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black.withOpacity(0.35),
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } else {
+      isLoading = false;
+      update();
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setBool("isBottom", true);
+      isBottom = preferences.getBool('isBottom')!;
+      await fetchUserController.logInUser(
+          email ?? "",
+          password ?? ""
+      );
+      preferences.setString("userEmail", androidId);
+      if (fetchUserController.userData?.status ?? false) {
+        /// Is host ture
+        if (fetchUserController.userData?.user?.isHost == true) {
+          log("Get is host true");
+          await fetchHostController.fetchHost(0, fcmToken, androidId, androidId,
+              fetchUserController.userData?.user?.country ?? '', fetchUserController.userData?.user?.name ?? "");
+          //------------------------
+          preferences.setBool("hostIsBlock", fetchHostController.hostData?.host?.isBlock ?? false);
+          preferences.setBool("isHost", true);
+          preferences.setBool("isLogin", true);
+          preferences.setString("userName", fetchHostController.hostData?.host?.name.toString() ?? '');
+          preferences.setString("userCoin", fetchHostController.hostData?.host?.coin.toString() ?? '');
+          preferences.setString("userImage", fetchHostController.hostData?.host?.image.toString() ?? "");
+          preferences.setString("getHostCoverImage", fetchHostController.hostData?.host?.coverImage.toString() ?? '');
+          preferences.setString("userBio", fetchHostController.hostData?.host?.bio.toString() ?? '');
+          preferences.setString("userGender", fetchHostController.hostData?.host?.gender.toString() ?? '');
+          preferences.setString("loginUserId", fetchHostController.hostData?.host?.id.toString() ?? "");
+          preferences.setString("uniqueID", fetchHostController.hostData?.host?.uniqueID ?? "");
+          //----------------------------
+          isHost = preferences.getBool("isHost") ?? false;
+          hostIsBlock = preferences.getBool("hostIsBlock") ?? false;
+          userName = preferences.getString("userName") ?? "";
+          userCoin.value = preferences.getString("userCoin") ?? "";
+          userImage = preferences.getString("userImage") ?? "";
+          hostCoverImage = preferences.getString("getHostCoverImage") ?? "";
+          userBio = preferences.getString("userBio") ?? "";
+          uniqueId = preferences.getString("uniqueID") ?? "";
+          userGender = preferences.getString("userGender") ?? "";
+          loginUserId = preferences.getString("loginUserId") ?? "";
+          //----------------------------
+          selectedIndex = 0;
+          Get.off(() => const HostBottomNavigationBarScreen());
+        }
+        else {
+          isLoading = false;
+          update();
+          preferences.setBool("isLogin", true);
+          preferences.setString("getUserName", fetchUserController.userData?.user?.name.toString() ?? "");
+          preferences.setString("getUserBio", fetchUserController.userData?.user?.bio.toString() ?? "");
+          preferences.setString("getUserImage", fetchUserController.userData?.user?.image.toString() ?? "");
+          preferences.setString("loginUserId", fetchUserController.userData?.user?.id.toString() ?? "");
+          preferences.setString("userGender", fetchUserController.userData?.user?.gender.toString() ?? "");
+          preferences.setString("userCoin", fetchUserController.userData?.user?.coin.toString() ?? "");
+          preferences.setBool("userIsBlock", fetchUserController.userData?.user?.isBlock ?? false);
+          preferences.setBool("isHost", fetchUserController.userData?.user?.isHost ?? false);
+          preferences.setString("uniqueID", fetchUserController.userData?.user?.uniqueID ?? "");
+          //--------------------------------------------
+          userName = preferences.getString("getUserName") ?? "";
+          userBio = preferences.getString("getUserBio") ?? "";
+          userImage = preferences.getString("getUserImage") ?? "";
+          loginUserId = preferences.getString("loginUserId") ?? "";
+          userGender = preferences.getString("userGender") ?? "";
+          uniqueId = preferences.getString("uniqueID") ?? "";
+          isHost = preferences.getBool("isHost") ?? false;
+          userIsBlock = preferences.getBool("userIsBlock") ?? false;
+          userCoin.value = preferences.getString("userCoin") ?? "";
+          //---------------------------------------------
+          selectedIndex = 0;
+          Get.off(() => const UserBottomNavigationScreen());
+        }
+      }
+    }
   }
 
   onPageChanged(int index) {

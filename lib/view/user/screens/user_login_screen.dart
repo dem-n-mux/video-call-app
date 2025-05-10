@@ -13,6 +13,7 @@ import 'package:hokoo_flutter/Api_Service/controller/fetch_user_controller.dart'
 import 'package:hokoo_flutter/Controller/Google_Login/google_controller.dart';
 import 'package:hokoo_flutter/view/Host/Host%20Bottom%20Navigation%20Bar/host_bottom_navigation_screen.dart';
 import 'package:hokoo_flutter/view/Utils/Settings/app_images.dart';
+import 'package:hokoo_flutter/view/user/screens/login_profile_screen.dart';
 import 'package:hokoo_flutter/view/user/screens/user_add_profile_screen.dart';
 import 'package:hokoo_flutter/view/user/screens/user_bottom_navigation_screen/user_bottom_navigation_screen.dart';
 import 'package:hokoo_flutter/view/utils/settings/app_colors.dart';
@@ -79,225 +80,227 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      await Fluttertoast.showToast(
-                        msg: "Please Wait...",
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.SNACKBAR,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.black.withOpacity(0.35),
-                        textColor: Colors.white,
-                        fontSize: 16.0,
-                      );
-                      await authController.signInWithGoogle();
-                      if (authController.user != null) {
-                        SharedPreferences preferences = await SharedPreferences.getInstance();
-                        preferences.setBool("isBottom", true);
-                        isBottom = preferences.getBool('isBottom')!;
-                        final user = authController.user;
-                        await checkUserController.checkUser(user?.email ?? "");
-                        if (checkUserController.checkUserModel?.status == true) {
-                          if (checkUserController.checkUserModel?.isProfile == true) {
-                            setState(() {
-                              isLoading = false;
-                            });
-                            Get.off(() => UserAddProfileScreen(
-                                  isGoogle: true,
-                                  photoUrl: authController.user?.photoUrl ?? "",
-                                ));
-                          } else {
-                            setState(() {
-                              isLoading = false;
-                            });
-                            await fetchUserController.fetchUser(
-                                1,
-                                fcmToken,
-                                androidId,
-                                checkUserController.checkUserModel?.user?.email ?? "",
-                                checkUserController.checkUserModel?.user?.country ?? '',
-                                checkUserController.checkUserModel?.user?.image ?? "",
-                                checkUserController.checkUserModel?.user?.name ?? "",
-                                checkUserController.checkUserModel?.user?.age.toString() ?? "",
-                                checkUserController.checkUserModel?.user?.gender ?? "");
-                            if (fetchUserController.userData?.status ?? false) {
-                              if (fetchUserController.userData?.user?.isHost == true) {
-                                await fetchHostController.fetchHost(1, fcmToken, androidId, user?.email ?? "",
-                                    fetchCountry["country"] ?? "", user?.displayName ?? "");
-                                log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.status}");
-                                log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.message}");
-                                log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.host?.name}");
-                                if (fetchHostController.hostData?.status == true) {
-                                  preferences.setString(
-                                      "userName", fetchHostController.hostData?.host?.name.toString() ?? "");
-                                  preferences.setString(
-                                      "userBio", fetchHostController.hostData?.host?.bio.toString() ?? "");
-                                  preferences.setString(
-                                      "userImage", fetchHostController.hostData?.host?.image.toString() ?? "");
-                                  preferences.setString("getHostCoverImage",
-                                      fetchHostController.hostData?.host?.coverImage.toString() ?? "");
-                                  preferences.setBool("isLogin", true);
-                                  preferences.setString(
-                                      "loginUserId", fetchHostController.hostData?.host?.id.toString() ?? "");
-                                  preferences.setString(
-                                      "userGender", fetchHostController.hostData?.host?.gender.toString() ?? "");
-                                  preferences.setString(
-                                      "userCoin", fetchHostController.hostData?.host?.coin.toString() ?? "");
-                                  userCoin.value = preferences.getString("userCoin") ?? '';
-                                  userName = preferences.getString("userName") ?? "";
-                                  userBio = preferences.getString("userBio") ?? "";
-                                  userImage = preferences.getString("userImage") ?? "";
-                                  hostCoverImage = preferences.getString("getHostCoverImage") ?? "";
-                                  loginUserId = preferences.getString("loginUserId") ?? "";
-                                  userGender = preferences.getString("userGender") ?? "";
-                                  selectedIndex = 0;
-                                  Get.off(() => const HostBottomNavigationBarScreen());
-
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                } else {
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                  Fluttertoast.showToast(msg: fetchHostController.hostData?.message ?? "");
-                                }
-                              } else {
-                                setState(() {
-                                  isLoading = false;
-                                });
-                                await fetchUserController.fetchUser(
-                                    1,
-                                    fcmToken,
-                                    androidId,
-                                    checkUserController.checkUserModel?.user?.email ?? "",
-                                    checkUserController.checkUserModel?.user?.country ?? "",
-                                    checkUserController.checkUserModel?.user?.image ?? "",
-                                    checkUserController.checkUserModel?.user?.name ?? "",
-                                    checkUserController.checkUserModel?.user?.age.toString() ?? "",
-                                    checkUserController.checkUserModel?.user?.gender ?? "");
-                                preferences.setString(
-                                    "userName", fetchUserController.userData?.user?.name.toString() ?? "");
-                                preferences.setString(
-                                    "userBio", fetchUserController.userData?.user?.bio.toString() ?? "");
-                                preferences.setString(
-                                    "userImage", fetchUserController.userData?.user?.image.toString() ?? "");
-                                preferences.setString(
-                                    "loginUserId", fetchUserController.userData?.user?.id.toString() ?? "");
-                                preferences.setBool("isLogin", true);
-                                preferences.setString(
-                                    "userGender", fetchUserController.userData?.user?.gender.toString() ?? "");
-                                preferences.setString(
-                                    "uniqueId", fetchUserController.userData?.user?.uniqueID.toString() ?? "");
-                                preferences.setString(
-                                    "userCoin", fetchUserController.userData?.user?.coin.toString() ?? "");
-                                userCoin.value = preferences.getString("userCoin") ?? '';
-                                userName = preferences.getString("userName") ?? '';
-                                userBio = preferences.getString("userBio") ?? '';
-                                userImage = preferences.getString("userImage") ?? '';
-                                loginUserId = preferences.getString("loginUserId") ?? '';
-                                userGender = preferences.getString("userGender") ?? '';
-                                uniqueId = preferences.getString("uniqueId") ?? '';
-                                selectedIndex = 0;
-                                if (fetchUserController.userData?.status == true) {
-                                  Get.off(() => const UserBottomNavigationScreen());
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                } else {
-                                  setState(() {
-                                    isLoading = false;
-                                  });
-                                  Fluttertoast.showToast(msg: fetchUserController.userData?.message ?? "");
-                                }
-                              }
-                            } else {
-                              setState(() {
-                                isLoading = false;
-                              });
-                              Fluttertoast.showToast(msg: fetchUserController.userData?.message ?? "");
-                            }
-                          }
-                        }
-                      } else {
-                        setState(() {
-                          isLoading = false;
-                        });
-                        log("+++++++++++");
-                        const Text("User Not Found");
-                      }
-
-                      /// ============================= \\\
-                      // await Fluttertoast.showToast(
-                      //   msg: "Please Wait...",
-                      //   toastLength: Toast.LENGTH_SHORT,
-                      //   gravity: ToastGravity.BOTTOM,
-                      //   timeInSecForIosWeb: 1,
-                      //   backgroundColor: Colors.black.withOpacity(0.35),
-                      //   textColor: Colors.white,
-                      //   fontSize: 16.0,
-                      // );
-                      // SharedPreferences preferences = await SharedPreferences.getInstance();
-                      // preferences.setBool("isBottom", true);
-                      // isBottom = preferences.getBool('isBottom')!;
-                      // if (isHost) {
-                      //   await fetchHostController.fetchHost(0, fcmToken, androidId,
-                      //       "Flirtzy@gmail.com", fetchCountry["country"]);
-                      //   preferences.setString(
-                      //       "userName", fetchHostController.hostData!.host!.name.toString());
-                      //   preferences.setString(
-                      //       "userBio", fetchHostController.hostData!.host!.bio.toString());
-                      //   preferences.setString("userImage",
-                      //       fetchHostController.hostData!.host!.image.toString());
-                      //   preferences.setString("getHostCoverImage",
-                      //       fetchHostController.hostData!.host!.coverImage.toString());
-                      //   preferences.setString(
-                      //       "loginUserId", fetchHostController.hostData!.host!.id.toString());
-                      //   preferences.setString("userGender",
-                      //       fetchHostController.hostData!.host!.gender.toString());
-                      //   userName = preferences.getString("userName")!;
-                      //   userBio = preferences.getString("userBio")!;
-                      //   userImage = preferences.getString("userImage")!;
-                      //   hostCoverImage = preferences.getString("getHostCoverImage")!;
-                      //   loginUserId = preferences.getString("loginUserId")!;
-                      //   userGender = preferences.getString("userGender")!;
-                      //   selectedIndex = 0;
-                      //   Get.off(() => const HostBottomNavigationBarScreen());
-                      // } else {
-                      //   await fetchUserController.fetchUser(
-                      //       0,
-                      //       fcmToken,
-                      //       androidId,
-                      //       "Flirtzy@gmail.com",
-                      //       (fetchCountry.isEmpty) ? "India" : fetchCountry["country"]);
-                      //   preferences.setString("getUserName",
-                      //       fetchUserController.userData!.user!.name.toString());
-                      //   preferences.setString(
-                      //       "getUserBio", fetchUserController.userData!.user!.bio.toString());
-                      //   preferences.setString("getUserImage",
-                      //       fetchUserController.userData!.user!.image.toString());
-                      //   preferences.setString(
-                      //       "loginUserId", fetchUserController.userData!.user!.id.toString());
-                      //   preferences.setString("userGender",
-                      //       fetchUserController.userData!.user!.gender.toString());
-                      //   userName = preferences.getString("getUserName")!;
-                      //   userBio = preferences.getString("getUserBio")!;
-                      //   userImage = preferences.getString("getUserImage")!;
-                      //   loginUserId = preferences.getString("loginUserId")!;
-                      //   userGender = preferences.getString("userGender")!;
-                      //   selectedIndex = 0;
-                      //   Get.off(() => const UserBottomNavigationScreen());
-                      // }
-                    },
-                    child: const CommonLoginButton(
-                      icon: AppIcons.googleIcon,
-                      title: "Login with Gmail",
-                      padding: 8,
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () async {
+                  //     setState(() {
+                  //       isLoading = true;
+                  //     });
+                  //     await Fluttertoast.showToast(
+                  //       msg: "Please Wait...",
+                  //       toastLength: Toast.LENGTH_SHORT,
+                  //       gravity: ToastGravity.SNACKBAR,
+                  //       timeInSecForIosWeb: 1,
+                  //       backgroundColor: Colors.black.withOpacity(0.35),
+                  //       textColor: Colors.white,
+                  //       fontSize: 16.0,
+                  //     );
+                  //     await authController.signInWithGoogle();
+                  //     if (authController.user != null) {
+                  //       SharedPreferences preferences = await SharedPreferences.getInstance();
+                  //       preferences.setBool("isBottom", true);
+                  //       isBottom = preferences.getBool('isBottom')!;
+                  //       final user = authController.user;
+                  //       await checkUserController.checkUser(user?.email ?? "");
+                  //       if (checkUserController.checkUserModel?.status == true) {
+                  //         if (checkUserController.checkUserModel?.isProfile == true) {
+                  //           setState(() {
+                  //             isLoading = false;
+                  //           });
+                  //           Get.off(() => UserAddProfileScreen(
+                  //                 isGoogle: true,
+                  //                 isCustom: false,
+                  //                 photoUrl: authController.user?.photoUrl ?? "",
+                  //               ));
+                  //         } else {
+                  //           setState(() {
+                  //             isLoading = false;
+                  //           });
+                  //           await fetchUserController.fetchUser(
+                  //               1,
+                  //               fcmToken,
+                  //               androidId,
+                  //               checkUserController.checkUserModel?.user?.email ?? "",
+                  //               checkUserController.checkUserModel?.user?.country ?? '',
+                  //               checkUserController.checkUserModel?.user?.image ?? "",
+                  //               checkUserController.checkUserModel?.user?.name ?? "",
+                  //               checkUserController.checkUserModel?.user?.age.toString() ?? "",
+                  //               checkUserController.checkUserModel?.user?.gender ?? "");
+                  //           if (fetchUserController.userData?.status ?? false) {
+                  //             if (fetchUserController.userData?.user?.isHost == true) {
+                  //               await fetchHostController.fetchHost(1, fcmToken, androidId, user?.email ?? "",
+                  //                   fetchCountry["country"] ?? "", user?.displayName ?? "");
+                  //               log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.status}");
+                  //               log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.message}");
+                  //               log("fetchHostController.hostData?.status found ::${fetchHostController.hostData?.host?.name}");
+                  //               if (fetchHostController.hostData?.status == true) {
+                  //                 preferences.setString(
+                  //                     "userName", fetchHostController.hostData?.host?.name.toString() ?? "");
+                  //                 preferences.setString(
+                  //                     "userBio", fetchHostController.hostData?.host?.bio.toString() ?? "");
+                  //                 preferences.setString(
+                  //                     "userImage", fetchHostController.hostData?.host?.image.toString() ?? "");
+                  //                 preferences.setString("getHostCoverImage",
+                  //                     fetchHostController.hostData?.host?.coverImage.toString() ?? "");
+                  //                 preferences.setBool("isLogin", true);
+                  //                 preferences.setString(
+                  //                     "loginUserId", fetchHostController.hostData?.host?.id.toString() ?? "");
+                  //                 preferences.setString(
+                  //                     "userGender", fetchHostController.hostData?.host?.gender.toString() ?? "");
+                  //                 preferences.setString(
+                  //                     "userCoin", fetchHostController.hostData?.host?.coin.toString() ?? "");
+                  //                 userCoin.value = preferences.getString("userCoin") ?? '';
+                  //                 userName = preferences.getString("userName") ?? "";
+                  //                 userBio = preferences.getString("userBio") ?? "";
+                  //                 userImage = preferences.getString("userImage") ?? "";
+                  //                 hostCoverImage = preferences.getString("getHostCoverImage") ?? "";
+                  //                 loginUserId = preferences.getString("loginUserId") ?? "";
+                  //                 userGender = preferences.getString("userGender") ?? "";
+                  //                 selectedIndex = 0;
+                  //                 Get.off(() => const HostBottomNavigationBarScreen());
+                  //
+                  //                 setState(() {
+                  //                   isLoading = false;
+                  //                 });
+                  //               } else {
+                  //                 setState(() {
+                  //                   isLoading = false;
+                  //                 });
+                  //                 Fluttertoast.showToast(msg: fetchHostController.hostData?.message ?? "");
+                  //               }
+                  //             } else {
+                  //               setState(() {
+                  //                 isLoading = false;
+                  //               });
+                  //               await fetchUserController.fetchUser(
+                  //                   1,
+                  //                   fcmToken,
+                  //                   androidId,
+                  //                   checkUserController.checkUserModel?.user?.email ?? "",
+                  //                   checkUserController.checkUserModel?.user?.country ?? "",
+                  //                   checkUserController.checkUserModel?.user?.image ?? "",
+                  //                   checkUserController.checkUserModel?.user?.name ?? "",
+                  //                   checkUserController.checkUserModel?.user?.age.toString() ?? "",
+                  //                   checkUserController.checkUserModel?.user?.gender ?? "");
+                  //               preferences.setString(
+                  //                   "userName", fetchUserController.userData?.user?.name.toString() ?? "");
+                  //               preferences.setString(
+                  //                   "userBio", fetchUserController.userData?.user?.bio.toString() ?? "");
+                  //               preferences.setString(
+                  //                   "userImage", fetchUserController.userData?.user?.image.toString() ?? "");
+                  //               preferences.setString(
+                  //                   "loginUserId", fetchUserController.userData?.user?.id.toString() ?? "");
+                  //               preferences.setBool("isLogin", true);
+                  //               preferences.setString(
+                  //                   "userGender", fetchUserController.userData?.user?.gender.toString() ?? "");
+                  //               preferences.setString(
+                  //                   "uniqueId", fetchUserController.userData?.user?.uniqueID.toString() ?? "");
+                  //               preferences.setString(
+                  //                   "userCoin", fetchUserController.userData?.user?.coin.toString() ?? "");
+                  //               userCoin.value = preferences.getString("userCoin") ?? '';
+                  //               userName = preferences.getString("userName") ?? '';
+                  //               userBio = preferences.getString("userBio") ?? '';
+                  //               userImage = preferences.getString("userImage") ?? '';
+                  //               loginUserId = preferences.getString("loginUserId") ?? '';
+                  //               userGender = preferences.getString("userGender") ?? '';
+                  //               uniqueId = preferences.getString("uniqueId") ?? '';
+                  //               selectedIndex = 0;
+                  //               if (fetchUserController.userData?.status == true) {
+                  //                 Get.off(() => const UserBottomNavigationScreen());
+                  //                 setState(() {
+                  //                   isLoading = false;
+                  //                 });
+                  //               } else {
+                  //                 setState(() {
+                  //                   isLoading = false;
+                  //                 });
+                  //                 Fluttertoast.showToast(msg: fetchUserController.userData?.message ?? "");
+                  //               }
+                  //             }
+                  //           } else {
+                  //             setState(() {
+                  //               isLoading = false;
+                  //             });
+                  //             Fluttertoast.showToast(msg: fetchUserController.userData?.message ?? "");
+                  //           }
+                  //         }
+                  //       }
+                  //     } else {
+                  //       setState(() {
+                  //         isLoading = false;
+                  //       });
+                  //       log("+++++++++++");
+                  //       const Text("User Not Found");
+                  //     }
+                  //
+                  //     /// ============================= \\\
+                  //     // await Fluttertoast.showToast(
+                  //     //   msg: "Please Wait...",
+                  //     //   toastLength: Toast.LENGTH_SHORT,
+                  //     //   gravity: ToastGravity.BOTTOM,
+                  //     //   timeInSecForIosWeb: 1,
+                  //     //   backgroundColor: Colors.black.withOpacity(0.35),
+                  //     //   textColor: Colors.white,
+                  //     //   fontSize: 16.0,
+                  //     // );
+                  //     // SharedPreferences preferences = await SharedPreferences.getInstance();
+                  //     // preferences.setBool("isBottom", true);
+                  //     // isBottom = preferences.getBool('isBottom')!;
+                  //     // if (isHost) {
+                  //     //   await fetchHostController.fetchHost(0, fcmToken, androidId,
+                  //     //       "Flirtzy@gmail.com", fetchCountry["country"]);
+                  //     //   preferences.setString(
+                  //     //       "userName", fetchHostController.hostData!.host!.name.toString());
+                  //     //   preferences.setString(
+                  //     //       "userBio", fetchHostController.hostData!.host!.bio.toString());
+                  //     //   preferences.setString("userImage",
+                  //     //       fetchHostController.hostData!.host!.image.toString());
+                  //     //   preferences.setString("getHostCoverImage",
+                  //     //       fetchHostController.hostData!.host!.coverImage.toString());
+                  //     //   preferences.setString(
+                  //     //       "loginUserId", fetchHostController.hostData!.host!.id.toString());
+                  //     //   preferences.setString("userGender",
+                  //     //       fetchHostController.hostData!.host!.gender.toString());
+                  //     //   userName = preferences.getString("userName")!;
+                  //     //   userBio = preferences.getString("userBio")!;
+                  //     //   userImage = preferences.getString("userImage")!;
+                  //     //   hostCoverImage = preferences.getString("getHostCoverImage")!;
+                  //     //   loginUserId = preferences.getString("loginUserId")!;
+                  //     //   userGender = preferences.getString("userGender")!;
+                  //     //   selectedIndex = 0;
+                  //     //   Get.off(() => const HostBottomNavigationBarScreen());
+                  //     // } else {
+                  //     //   await fetchUserController.fetchUser(
+                  //     //       0,
+                  //     //       fcmToken,
+                  //     //       androidId,
+                  //     //       "Flirtzy@gmail.com",
+                  //     //       (fetchCountry.isEmpty) ? "India" : fetchCountry["country"]);
+                  //     //   preferences.setString("getUserName",
+                  //     //       fetchUserController.userData!.user!.name.toString());
+                  //     //   preferences.setString(
+                  //     //       "getUserBio", fetchUserController.userData!.user!.bio.toString());
+                  //     //   preferences.setString("getUserImage",
+                  //     //       fetchUserController.userData!.user!.image.toString());
+                  //     //   preferences.setString(
+                  //     //       "loginUserId", fetchUserController.userData!.user!.id.toString());
+                  //     //   preferences.setString("userGender",
+                  //     //       fetchUserController.userData!.user!.gender.toString());
+                  //     //   userName = preferences.getString("getUserName")!;
+                  //     //   userBio = preferences.getString("getUserBio")!;
+                  //     //   userImage = preferences.getString("getUserImage")!;
+                  //     //   loginUserId = preferences.getString("loginUserId")!;
+                  //     //   userGender = preferences.getString("userGender")!;
+                  //     //   selectedIndex = 0;
+                  //     //   Get.off(() => const UserBottomNavigationScreen());
+                  //     // }
+                  //   },
+                  //   child: const CommonLoginButton(
+                  //     icon: AppIcons.googleIcon,
+                  //     title: "Login with Gmail",
+                  //     padding: 8,
+                  //   ),
+                  // ),
+                  // QUICK LOGIN
                   CommonLoginButton(
                     onTap: () async {
                       setState(() {
@@ -326,6 +329,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                           });
                           Get.off(() => UserAddProfileScreen(
                                 isGoogle: false,
+                                isCustom: false,
                               ));
                         } else {
                           setState(() {
@@ -428,13 +432,70 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                     title: "Quick Login",
                     padding: 5,
                   ),
-
-
+                  // EMAIL SIGN UP
+                  CommonLoginButton(
+                    onTap: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      await Fluttertoast.showToast(
+                        msg: "Please Wait...",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black.withOpacity(0.35),
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                      SharedPreferences preferences = await SharedPreferences.getInstance();
+                      preferences.setBool("isBottom", true);
+                      isBottom = preferences.getBool('isBottom')!;
+                      setState(() {
+                        isLoading = false;
+                      });
+                      Get.off(() => UserAddProfileScreen(
+                        isGoogle: false,
+                        isCustom: true,
+                      ));
+                    },
+                    icon: AppIcons.matchIcon,
+                    title: "Email Sign Up",
+                    padding: 5,
+                  ),
+                  // EMAIL LOG IN
+                  CommonLoginButton(
+                    onTap: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      await Fluttertoast.showToast(
+                        msg: "Please Wait...",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black.withOpacity(0.35),
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                      SharedPreferences preferences = await SharedPreferences.getInstance();
+                      preferences.setBool("isBottom", true);
+                      isBottom = preferences.getBool('isBottom')!;
+                      setState(() {
+                        isLoading = false;
+                      });
+                      Get.off(() => UserLoginScreen2());
+                    },
+                    icon: AppIcons.profileIcon,
+                    title: "Email Log in",
+                    padding: 5,
+                  ),
+                  const SizedBox(height: 20,),
                   const Text(
                     "By Signing up you will be agree to our",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 17,
+                      fontSize: 17
+                      , fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(
@@ -445,18 +506,19 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                     children: [
                       Text(
                         "Terms & Condition",
-                        style: TextStyle(color: AppColors.pinkColor, fontWeight: FontWeight.w600, fontSize: 18),
+                        style: TextStyle(color: AppColors.pinkColor, fontWeight: FontWeight.w600, fontSize: 17),
                       ),
                       Text(
                         " and ",
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 17,
+                          fontSize: 17
+                          , fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
                         "Privacy Policy",
-                        style: TextStyle(color: AppColors.pinkColor, fontWeight: FontWeight.w600, fontSize: 18),
+                        style: TextStyle(color: AppColors.pinkColor, fontWeight: FontWeight.w600, fontSize: 17),
                       ),
                     ],
                   )

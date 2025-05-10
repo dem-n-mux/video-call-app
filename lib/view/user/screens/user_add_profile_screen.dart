@@ -19,10 +19,13 @@ import 'package:hokoo_flutter/view/utils/widgets/progress_dialog.dart';
 import 'package:hokoo_flutter/view/utils/widgets/common_button.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import '../../utils/widgets/signup_text_field.dart';
+
 class UserAddProfileScreen extends StatefulWidget {
   bool isGoogle;
+  bool isCustom;
   String? photoUrl;
-  UserAddProfileScreen({Key? key, required this.isGoogle, this.photoUrl}) : super(key: key);
+  UserAddProfileScreen({Key? key, required this.isGoogle, required this.isCustom, this.photoUrl}) : super(key: key);
 
   @override
   State<UserAddProfileScreen> createState() => _UserAddProfileScreenState();
@@ -33,6 +36,11 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
   GlobalCountryController globalCountryController = Get.put(GlobalCountryController());
   AuthController authController = Get.put(AuthController());
 
+  final fullNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final referredByController = TextEditingController();
+
   @override
   void initState() {
     globalCountryController.globalCountryForProfile("");
@@ -42,12 +50,6 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
-    log("Height is :: $height");
-    log("Width is :: $width");
-
     return PopScope(
       canPop: false,
       child: GestureDetector(
@@ -62,14 +64,13 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                 toolbarHeight: 65,
                 centerTitle: true,
                 title: Text(
-                  "Fill Your Profile",
+                  "Complete Your Profile",
                   style: GoogleFonts.poppins(
                     color: AppColors.blackColor,
                     fontWeight: FontWeight.w500,
                     fontSize: 21,
                   ),
                 )),
-            // backgroundColor: AppColors.appBackgroundHeart,
             body: Container(
               height: Get.height,
               width: Get.width,
@@ -87,8 +88,6 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                     children: [
                       GetBuilder<AddProfileController>(
                         builder: (controller) {
-                          log("authController.user?.photoUrl${authController.user?.photoUrl}");
-                          log("authController.user?.photoUrl${authController.user?.photoUrl}");
                           return Center(
                             child: Container(
                                 height: 115,
@@ -122,78 +121,27 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                           );
                         },
                       ),
-
-                      /// FOR  Pick Image
-
-                      /*  GetBuilder<AddProfileController>(
-                        builder: (controller) {
-                          return GestureDetector(
-                            onTap: () async {
-                              controller.clickImage();
-                            },
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      bottom: 10,
-                                    ),
-                                    alignment: Alignment.center,
-                                    height: 120,
-                                    width: 120,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            AppColors.primaryPurple,
-                                            Colors.transparent,
-                                          ],
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                        )),
-                                    child: getUserProfileImage == null
-                                        ? Container(
-                                            height: 115,
-                                            width: 115,
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                      "${Constant.BASE_URL}storage/female.png",
-                                                    ))),
-                                          )
-                                        : Container(
-                                            height: 115,
-                                            width: 115,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                fit: BoxFit.cover,
-                                                image: FileImage(getUserProfileImage!),
-                                              ),
-                                            ),
-                                          ),
-                                  ),
-                                  const Text(
-                                    "Change Photo",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17,
-                                      color: AppColors.blackColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),*/
-                      Text(
-                        "Country",
-                        style:
-                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
-                      ).paddingOnly(top: 20, bottom: 10),
+                      widget.isCustom ? SignupTextField(
+                        controller: fullNameController,
+                        onEditingComplete: () => Get.focusScope?.nextFocus(),
+                        title: 'Full Name',
+                      ) : const SizedBox(),
+                      widget.isCustom ? SignupTextField(
+                        controller: emailController,
+                        onEditingComplete: () => Get.focusScope?.nextFocus(),
+                        title: 'Email Address',
+                      ) : const SizedBox(),
+                      widget.isCustom ? SignupTextField(
+                        controller: passwordController,
+                        obscureText: true,
+                        onEditingComplete: () => Get.focusScope?.unfocus(),
+                        title: 'Password',
+                      ) : const SizedBox(),
+                      widget.isCustom ? SignupTextField(
+                        controller: referredByController,
+                        onEditingComplete: () => Get.focusScope?.unfocus(),
+                        title: 'Referral Code (Optional)',
+                      ) : const SizedBox(),
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
@@ -405,36 +353,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                               ),
                             ],
                           ),
-
-                          // child: Center(
-                          //   child: TextFormField(
-                          //     maxLength: 20,
-                          //     onEditingComplete: () => FocusScope.of(context).nextFocus(),
-                          //     textInputAction: TextInputAction.done,
-                          //     cursorColor: AppColors.grey,
-                          //     // controller: userNameController,
-                          //     style: GoogleFonts.poppins(
-                          //       decoration: TextDecoration.none,
-                          //       color: AppColors.whiteColor,
-                          //       fontSize: 15,
-                          //       fontWeight: FontWeight.w500,
-                          //     ),
-                          //     maxLines: 1,
-                          //     decoration: InputDecoration(
-                          //        counterText: "",
-                          //       border: InputBorder.none,
-                          //       hintText: "Select your country",
-                          //       hintStyle:
-                          //           GoogleFonts.poppins(color: AppColors.grey, fontSize: 15, fontWeight: FontWeight.w400),
-                          //     ),
-                          //   ),
-                          // ),
                         ),
-                      ),
-                      Text(
-                        "Age",
-                        style:
-                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
                       ).paddingOnly(top: 20, bottom: 10),
                       GestureDetector(
                         onTap: () {
@@ -605,42 +524,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                               ).paddingOnly(right: 16),
                             ],
                           ),
-                          /* child: GetBuilder<AddProfileController>(
-                            builder: (controller) {
-                              return Center(
-                                child: TextFormField(
-                                  maxLength: 3,
-                                  onEditingComplete: () => FocusScope.of(context).nextFocus(),
-                                  textInputAction: TextInputAction.done,
-                                  cursorColor: AppColors.grey,
-                                  controller: controller.ageController,
-                                  style: GoogleFonts.poppins(
-                                    decoration: TextDecoration.none,
-                                    color: AppColors.whiteColor,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  maxLines: 1,
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    counterText: "",
-                                    border: InputBorder.none,
-                                    hintText: "Enter your age",
-                                    hintStyle: GoogleFonts.poppins(
-                                        color: AppColors.grey, fontSize: 15, fontWeight: FontWeight.w400),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),*/
                         ),
-                      ),
-                      // SizedBox(height: 20),
-                      Text(
-                        "Gender",
-                        style:
-                            GoogleFonts.poppins(color: AppColors.blackColor, fontWeight: FontWeight.w600, fontSize: 15),
-                      ).paddingOnly(top: 20, bottom: 10),
+                      ).paddingOnly(top: 10, bottom: 10),
                       GetBuilder<AddProfileController>(
                         builder: (controller) {
                           return Row(
@@ -657,8 +542,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                           bottom: 10,
                                         ),
                                         alignment: Alignment.center,
-                                        height: Get.width * 0.27,
-                                        width: Get.width * 0.27,
+                                        height: Get.width * 0.24,
+                                        width: Get.width * 0.24,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             gradient: LinearGradient(
@@ -672,8 +557,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                             )),
                                         child: Container(
                                           alignment: Alignment.center,
-                                          height: Get.width * 0.26,
-                                          width: Get.width * 0.26,
+                                          height: Get.width * 0.23,
+                                          width: Get.width * 0.23,
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               gradient: (controller.selectedGender == 0)
@@ -688,9 +573,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                     )
                                                   : const LinearGradient(
                                                       colors: [
-                                                        AppColors.appBarColor,
-                                                        AppColors.appBarColor,
-                                                        AppColors.appBarColor,
+                                                        AppColors.lightPinkColor,
+                                                        AppColors.grey,
                                                       ],
                                                       begin: Alignment.topLeft,
                                                       end: Alignment.bottomRight,
@@ -725,8 +609,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                           bottom: 10,
                                         ),
                                         alignment: Alignment.center,
-                                        height: Get.width * 0.27,
-                                        width: Get.width * 0.27,
+                                        height: Get.width * 0.24,
+                                        width: Get.width * 0.24,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             gradient: LinearGradient(
@@ -740,8 +624,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                             )),
                                         child: Container(
                                           alignment: Alignment.center,
-                                          height: Get.width * 0.26,
-                                          width: Get.width * 0.26,
+                                          height: Get.width * 0.23,
+                                          width: Get.width * 0.23,
                                           decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               gradient: (controller.selectedGender == 1)
@@ -756,9 +640,8 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                                                     )
                                                   : const LinearGradient(
                                                       colors: [
-                                                        AppColors.appBarColor,
-                                                        AppColors.appBarColor,
-                                                        AppColors.appBarColor,
+                                                        AppColors.lightPinkColor,
+                                                        AppColors.grey,
                                                       ],
                                                       begin: Alignment.topLeft,
                                                       end: Alignment.bottomRight,
@@ -785,7 +668,7 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                             ],
                           );
                         },
-                      ),
+                      ).paddingOnly(top: 20, bottom: 80),
                     ],
                   ),
                 ),
@@ -799,7 +682,19 @@ class _UserAddProfileScreenState extends State<UserAddProfileScreen> {
                   child: CommonButton(
                     text: "Save",
                     onTap: () {
-                      widget.isGoogle ? controller.onClickSaveBtnForGoogle() : controller.onClickSaveBtnForQuick();
+                      if (widget.isCustom) {
+                        controller.onChangedName(fullNameController.text);
+                        controller.onChangedEmail(emailController.text);
+                        controller.onChangedPassword(passwordController.text);
+                        controller.onChangedReferredBy(referredByController.text);
+                        controller.onClickSaveBtnForCustom();
+                      } else {
+                        if (widget.isGoogle) {
+                          controller.onClickSaveBtnForGoogle();
+                        } else {
+                          controller.onClickSaveBtnForQuick();
+                        }
+                      }
                     },
                   ),
                 );

@@ -41,4 +41,68 @@ class FetchUserService {
       throw Exception(e);
     }
   }
+
+  static Future<FetchUserModel> signUpUser(int loginType, String fcmToken, String identity, String email,
+      String country, String image, String name, String age, String gender, String password, String? referredBy) async {
+    try {
+      var uri = Uri.parse(Constant.BASE_URL + Constant.signUpUser);
+      log("fetch User::::::: uri ::$uri");
+      var payload = json.encode({
+        "loginType": loginType,
+        "fcm_token": fcmToken,
+        "identity": identity,
+        "email": email,
+        "country": country,
+        "name": name,
+        "image": image,
+        "age": age,
+        "gender": gender,
+        "password": password,
+        "referredBy": referredBy
+      }.map((key, value) => MapEntry(key, value.toString())));
+      log("fetch User::::::: payload   $payload");
+      final response = await http.post(uri,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            "key": Constant.SECRET_KEY
+          },
+          body: payload);
+
+      if (response.statusCode == 200) {
+        return FetchUserModel.fromJson(jsonDecode(response.body));
+      } else {
+        log(response.statusCode.toString());
+      }
+      return FetchUserModel.fromJson(jsonDecode(response.body));
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+  static Future<FetchUserModel> logInUser(String email,
+      String password) async {
+    try {
+      var uri = Uri.parse(Constant.BASE_URL + Constant.logInUser);
+      log("fetch User::::::: uri ::$uri");
+      var payload = json.encode({
+        "email": email,
+        "password": password,
+      }.map((key, value) => MapEntry(key, value.toString())));
+      log("fetch User::::::: payload   $payload");
+      final response = await http.post(uri,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            "key": Constant.SECRET_KEY
+          },
+          body: payload);
+
+      if (response.statusCode == 200) {
+        return FetchUserModel.fromJson(jsonDecode(response.body));
+      } else {
+        log(response.statusCode.toString());
+      }
+      return FetchUserModel.fromJson(jsonDecode(response.body));
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

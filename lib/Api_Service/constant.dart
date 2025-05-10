@@ -18,6 +18,10 @@ class Constant {
   static const updateUser = "user/userProfile";
   static const checkUser = "user/checkUser";
 
+  //////////// AUTH ////////////
+  static const signUpUser = "user/register";
+  static const logInUser = "user/login";
+
   ///////////// Host /////////////
   static const fetchHost = "host/login";
   static const fetchLiveHost = "liveHost";
